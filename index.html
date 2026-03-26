@@ -182,7 +182,7 @@ footer p{font-size:18.2px;color:var(--ts);}
 </footer>
 
 <script>
-var WK = 'https://numerolog.poponina73.workers.dev'; // замените на адрес вашего Worker для нумерологии
+var WK = 'https://numer.poponina73.workers.dev'; // пока не используется
 var SP = {
   lifepath: 'Число жизненного пути — главное число судьбы. Оно показывает вашу миссию, врождённые таланты и направление развития.',
   soul: 'Число души — ваши истинные желания, внутренние мотивы, то, что приносит радость и удовлетворение.',
@@ -213,7 +213,6 @@ function fixIncompleteSentences(str){
   return str;
 }
 function getRemarkByTheme(theme){
-  // можно добавить специфичные для нумерологии ремарки, если нужно
   return null;
 }
 
@@ -226,7 +225,6 @@ function selectSpread(val){
 function toggleQuestion(val){
   var block = document.getElementById('questionBlock');
   if(block) block.style.display = 'block';
-  // поле даты всегда видимо
 }
 function updatePrice(){
   var priceSpan = document.getElementById('priceDisplay');
@@ -244,26 +242,6 @@ function startReading(){
   if(!sp){alert('Выберите тип расчёта');return;}
   performReading(sp, birthdate);
 }
-  .then(r => r.json())
-  .then(payment => {
-    if(payment.confirmation && payment.confirmation.confirmation_url){
-      localStorage.setItem('paymentId', payment.id);
-      window.location.href = payment.confirmation.confirmation_url;
-    } else {
-      alert('Ошибка создания платежа');
-      btn.disabled = false;
-      btn.textContent = '🔢 Рассчитать';
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    alert('Ошибка при создании платежа');
-    btn.disabled = false;
-    btn.textContent = '🔢 Рассчитать';
-  });
-}
-
-
 
 function performReading(sp, birthdate) {
   var btn = document.getElementById('orderBtn');
@@ -276,72 +254,27 @@ function performReading(sp, birthdate) {
   document.getElementById('rdiv').innerHTML = '';
   document.getElementById('cdiv').style.display = 'none';
 
-  var prompt = 'Тип расчёта: ' + SP[sp] + '. Дата рождения: "' + birthdate + '". Ты профессиональный нумеролог. Выполни подробный нумерологический разбор. ОТВЕТ ТОЛЬКО JSON. Структура: {"cards":[{"name":"Число","reading":"текст"}],"conclusion":"текст"}. Для полного разбора (full) включи несколько чисел (жизненный путь, душа, судьба, личность, зрелость) с их описанием. Для других типов — только одно число с развёрнутым описанием. Пиши развёрнуто, с теплотой, без команд, без отправки к специалистам. Каждую мысль доводи до конца. Запрещены звёздочки и английские слова.';
-
-  fetch(WK, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
-      messages: [
-        { 
-          role: 'system', 
-          content: 'Ты — мудрый и чуткий нумеролог. Твой ответ — только JSON. Начинай с { и заканчивай }. Пиши развёрнуто, но без воды. Каждую мысль доводи до конца. Запрещено отправлять к специалистам. Ты сама даёшь ответ. Тон: тёплый, честный, поддерживающий.'
-        },
-        { role: 'user', content: prompt }
-      ],
-      max_tokens: 5000,
-      temperature: 0.85
-    })
-  })
-  .then(r => r.json())
-  .then(data => {
-    if (data.error) throw new Error(data.error.message);
-    var content = data.choices[0].message.content;
-    if (typeof content === 'object') return content;
-    var cleaned = content.replace(/```json|```/g, '').trim();
-    var jsonStart = cleaned.indexOf('{');
-    var jsonEnd = cleaned.lastIndexOf('}');
-    if (jsonStart === -1 || jsonEnd === -1) throw new Error('В ответе не найден JSON');
-    var jsonString = cleaned.substring(jsonStart, jsonEnd + 1);
-    return JSON.parse(jsonString);
-  })
-  .then(p => {
-    if (!p.cards || !Array.isArray(p.cards)) throw new Error('Некорректная структура ответа');
-    p.cards.forEach(c => {
-      c.reading = cleanText(c.reading);
-      c.reading = removeReferralToSpecialist(c.reading);
-      c.reading = fixIncompleteSentences(c.reading);
-    });
-    if(p.conclusion) {
-      p.conclusion = cleanText(p.conclusion);
-      p.conclusion = removeReferralToSpecialist(p.conclusion);
-      p.conclusion = fixIncompleteSentences(p.conclusion);
-    }
-    
+  // Демо-заглушка (вместо реального вызова Worker)
+  setTimeout(() => {
     document.getElementById('ldiv').style.display = 'none';
-    var area = document.getElementById('rdiv');
-    area.innerHTML = '';
-    p.cards.forEach(c => {
-      var d = document.createElement('div');
-      d.className = 'rb';
-      d.innerHTML = '<div class="rb-name">' + c.name + '</div><div class="rb-text">' + c.reading + '</div>';
-      area.appendChild(d);
-    });
-    if(p.conclusion){
-      document.getElementById('ctxt').textContent = p.conclusion;
-      document.getElementById('cdiv').style.display = 'block';
-    }
-    window.lastResult = p;
-  })
-  .catch(e => {
-    document.getElementById('ldiv').innerHTML = '⚠️ Ошибка: ' + e.message;
-    console.error(e);
-  })
-  .finally(() => {
+    document.getElementById('rdiv').innerHTML = `
+      <div class="rb"><div class="rb-name">Число жизненного пути</div><div class="rb-text">Ваше число жизненного пути — 7. Это число искателя истины, аналитика и философа. Вы стремитесь к глубокому пониманию мира, цените одиночество и время для размышлений. Ваш путь — это поиск знаний, мудрости и духовного развития.</div></div>
+      <div class="rb"><div class="rb-name">Число души</div><div class="rb-text">Число души 5 — вы жаждете свободы, перемен и новых впечатлений. Вам важно быть в движении, менять обстановку, пробовать новое. Это число даёт любопытство и лёгкость на подъём, но требует осторожности, чтобы не распыляться.</div></div>
+      <div class="rb"><div class="rb-name">Число судьбы</div><div class="rb-text">Число судьбы 3 — ваша задача научиться выражать себя, делиться радостью и творчеством. Вы пришли в этот мир, чтобы вдохновлять других и находить красоту в повседневности. Реализация через общение, искусство или преподавание.</div></div>
+    `;
+    document.getElementById('ctxt').textContent = 'Ваши числа показывают, что вы находитесь на пути самопознания. Доверьтесь своей интуиции и не бойтесь перемен.';
+    document.getElementById('cdiv').style.display = 'block';
+    window.lastResult = {
+      cards: [
+        { name: 'Число жизненного пути', reading: 'Ваше число жизненного пути — 7. Это число искателя истины, аналитика и философа. Вы стремитесь к глубокому пониманию мира, цените одиночество и время для размышлений. Ваш путь — это поиск знаний, мудрости и духовного развития.' },
+        { name: 'Число души', reading: 'Число души 5 — вы жаждете свободы, перемен и новых впечатлений. Вам важно быть в движении, менять обстановку, пробовать новое. Это число даёт любопытство и лёгкость на подъём, но требует осторожности, чтобы не распыляться.' },
+        { name: 'Число судьбы', reading: 'Число судьбы 3 — ваша задача научиться выражать себя, делиться радостью и творчеством. Вы пришли в этот мир, чтобы вдохновлять других и находить красоту в повседневности. Реализация через общение, искусство или преподавание.' }
+      ],
+      conclusion: 'Ваши числа показывают, что вы находитесь на пути самопознания. Доверьтесь своей интуиции и не бойтесь перемен.'
+    };
     btn.disabled = false;
     btn.textContent = '🔢 Рассчитать';
-  });
+  }, 500);
 }
 
 function copyR(){
