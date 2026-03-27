@@ -182,148 +182,15 @@ footer p{font-size:18.2px;color:var(--ts);}
 </footer>
 
 <script>
-var WK = 'https://numer.poponina73.workers.dev'; // пока не используется
-var SP = {
-  lifepath: 'Число жизненного пути — главное число судьбы. Оно показывает вашу миссию, врождённые таланты и направление развития.',
-  soul: 'Число души — ваши истинные желания, внутренние мотивы, то, что приносит радость и удовлетворение.',
-  destiny: 'Число судьбы — задачи, которые вы пришли решить в этой жизни, внешние обстоятельства и кармические уроки.',
-  personality: 'Число личности — как вас видят окружающие, ваши сильные стороны в общении, первое впечатление.',
-  maturity: 'Число зрелости — к чему вы придёте во второй половине жизни, ваше высшее развитие и потенциал.',
-  full: 'Полный нумерологический разбор — анализ всех ключевых чисел по дате рождения: жизненный путь, душа, судьба, личность, зрелость и их взаимосвязь.'
-};
-
-function cleanText(str){
-  if (!str) return '';
-  return str.replace(/[^\u0400-\u04FF\s\n.,!?\-:;"'()]/g, '').replace(/\s+/g, ' ').trim();
-}
-function removeReferralToSpecialist(str){
-  if (!str) return '';
-  return str.replace(/обратитесь к (?:психологу|специалисту)/gi, '')
-            .replace(/поговорите с (?:психологом|специалистом)/gi, '')
-            .replace(/найдите (?:доверенного человека|психолога|специалиста)/gi, '')
-            .replace(/просить помощи/gi, '')
-            .replace(/обратиться за помощью/gi, '');
-}
-function fixIncompleteSentences(str){
-  if (!str) return '';
-  str = str.replace(/и их\.\s*/gi, 'и их принятия. ');
-  str = str.replace(/и их\s*$/gi, 'и их принятия.');
-  str = str.replace(/но признать его влияние\s*$/gi, 'но важно признать его влияние на вашу жизнь.');
-  str = str.replace(/чтобы\s*$/gi, 'чтобы двигаться дальше.');
-  return str;
-}
-function getRemarkByTheme(theme){
-  return null;
-}
-
-function selectSpread(val){
-  var sel = document.getElementById('spreadSelect');
-  if(sel) sel.value = val;
-  toggleQuestion(val);
-  document.getElementById('order').scrollIntoView({behavior:'smooth'});
-}
-function toggleQuestion(val){
-  var block = document.getElementById('questionBlock');
-  if(block) block.style.display = 'block';
-}
-function updatePrice(){
-  var priceSpan = document.getElementById('priceDisplay');
-  if(priceSpan) priceSpan.innerText = '299 ₽';
-}
-document.addEventListener('DOMContentLoaded', function() {
-  updatePrice();
-  toggleQuestion(document.getElementById('spreadSelect').value);
-});
-
-function startReading(){
-  var birthdate = document.getElementById('qInput').value.trim();
-  var sp = document.getElementById('spreadSelect').value;
-  if(!birthdate){alert('Введите дату рождения');return;}
-  if(!sp){alert('Выберите тип расчёта');return;}
-  performReading(sp, birthdate);
-}
-
-function performReading(sp, birthdate) {
-  var btn = document.getElementById('orderBtn');
-  btn.disabled = true;
-  btn.textContent = '🔢 Рассчитываю...';
-  var rs = document.getElementById('rs');
-  rs.style.display = 'block';
-  rs.scrollIntoView({behavior:'smooth'});
-  document.getElementById('ldiv').style.display = 'block';
-  document.getElementById('rdiv').innerHTML = '';
-  document.getElementById('cdiv').style.display = 'none'; // скрываем блок итога
-
-  // Заглушка с развёрнутыми ответами (без отдельного вывода)
-  setTimeout(() => {
-    document.getElementById('ldiv').style.display = 'none';
-    
-    var cards = [];
-    
-    if (sp === 'lifepath') {
-      cards = [{ name: 'Число жизненного пути', reading: 'Ваше число жизненного пути — 7. Это число искателя истины, аналитика и философа. Вы стремитесь к глубокому пониманию мира, цените одиночество и время для размышлений. Ваш путь — это поиск знаний, мудрости и духовного развития. Люди с таким числом часто становятся исследователями, учёными, писателями или наставниками. Вам важно периодически уединяться, чтобы переработать накопленные впечатления. Не бойтесь доверять своей интуиции и не торопите события — истина открывается постепенно.' }];
-    } else if (sp === 'soul') {
-      cards = [{ name: 'Число души', reading: 'Ваше число души — 5. Это число свободы, перемен и новых впечатлений. Вам важно быть в движении, менять обстановку, пробовать новое. Вы быстро адаптируетесь и легко находите общий язык с разными людьми. Чтобы чувствовать себя счастливым, вам нужны приключения, путешествия и разнообразие. Однако старайтесь не распыляться: глубокое изучение одного направления может дать больше, чем поверхностное знакомство со многими. Свобода для вас — это не бегство, а осознанный выбор своего пути.' }];
-    } else if (sp === 'destiny') {
-      cards = [{ name: 'Число судьбы', reading: 'Ваше число судьбы — 3. Это число творчества, самовыражения и радости. Ваша задача — научиться делиться своими талантами с миром, не бояться быть замеченным. Вы пришли в эту жизнь, чтобы вдохновлять других, дарить оптимизм и находить красоту в обыденном. Реализовать это можно через искусство, преподавание, публичные выступления или любую деятельность, где вы можете проявлять свою индивидуальность. Главное — не подавлять своё желание выражать себя и не бояться оценки окружающих.' }];
-    } else if (sp === 'personality') {
-      cards = [{ name: 'Число личности', reading: 'Ваше число личности — 6. Окружающие видят в вас заботливого, ответственного человека, который стремится к гармонии и порядку. Вы производите впечатление надёжного партнёра и хранителя семейных ценностей. Вас ценят за вашу способность создавать уют, поддерживать близких и находить компромиссы. Важно помнить, что забота о себе так же важна, как и о других. Учитесь говорить «нет» и выделять время на свои потребности — это сделает вашу помощь более ценной.' }];
-    } else if (sp === 'maturity') {
-      cards = [{ name: 'Число зрелости', reading: 'Ваше число зрелости — 8. Во второй половине жизни вас ждёт раскрытие материальной и управленческой энергии. Вы придёте к успеху через ответственность, дисциплину и умение выстраивать системы. Это время, когда вы можете реализовать масштабные проекты, занять руководящие позиции или создать что-то устойчивое. Чтобы прийти к этому, важно уже сейчас учиться управлять ресурсами, не бояться брать на себя ответственность и работать над своей уверенностью. Ваша зрелость принесёт не только материальные плоды, но и глубокое чувство собственной значимости.' }];
-    } else if (sp === 'full') {
-      cards = [
-        { name: 'Число жизненного пути (7)', reading: 'Вы искатель истины. Ваша глубина и аналитический склад ума ведут вас к познанию себя и мира. Вам нужно время для размышлений и уединения.' },
-        { name: 'Число души (5)', reading: 'Ваша душа жаждет свободы и разнообразия. Путешествия, новые впечатления, смена занятий — это ваша энергия.' },
-        { name: 'Число судьбы (3)', reading: 'Ваше призвание — выражать себя творчески и вдохновлять окружающих. Не бойтесь быть на виду.' },
-        { name: 'Число личности (6)', reading: 'Люди видят в вас надёжного, заботливого человека. Вы создаёте гармонию вокруг себя, но не забывайте о своих границах.' },
-        { name: 'Число зрелости (8)', reading: 'Во второй половине жизни вас ждёт успех через управление, ответственность и материальную реализацию. Готовьтесь к этому уже сейчас.' },
-        { name: 'Сводка', reading: 'Ваши числа образуют гармоничную картину: поиск истины, стремление к свободе, творческое самовыражение, забота о близких и потенциал лидерства. Все эти качества могут работать вместе, если вы позволите себе сочетать глубину с активностью, а свободу — с ответственностью.' }
-      ];
-    }
-    
-    var area = document.getElementById('rdiv');
-    area.innerHTML = '';
-    cards.forEach(c => {
-      var d = document.createElement('div');
-      d.className = 'rb';
-      d.innerHTML = '<div class="rb-name">' + c.name + '</div><div class="rb-text">' + c.reading + '</div>';
-      area.appendChild(d);
-    });
-    // блок итога не показываем
-    window.lastResult = { cards: cards, conclusion: '' };
-    
-    btn.disabled = false;
-    btn.textContent = '🔢 Рассчитать';
-  }, 500);
-}
-
-function copyR(){
-  if(!window.lastResult){
-    alert('Нет ответа для копирования');
-    return;
-  }
-  var text = '';
-  window.lastResult.cards.forEach(c => {
-    text += c.name + '\n' + c.reading + '\n\n';
-  });
-  if(window.lastResult.conclusion) text += 'Итог:\n' + window.lastResult.conclusion;
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(() => alert('Разбор скопирован')).catch(err => fallbackCopy(text));
-  } else {
-    fallbackCopy(text);
-  }
-  function fallbackCopy(txt){
-    var textarea = document.createElement('textarea');
-    textarea.value = txt;
-    document.body.appendChild(textarea);
-    textarea.select();
-    var success = false;
-    try { success = document.execCommand('copy'); } catch(e) { console.error(e); }
-    document.body.removeChild(textarea);
-    if(success) alert('Разбор скопирован');
-    else alert('Не удалось скопировать');
-  }
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Яна Белова — Нумерология</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0e8e4;--bg2:#e8ddd8;--cocoa:#6b4c3b
 </script>
 </body>
 </html>
