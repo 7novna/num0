@@ -2,315 +2,221 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Яна Белова — Нумерология | Числа судьбы</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Яна Белова — Нумерология</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=EB+Garamond&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f0e8e4;--bg2:#e8ddd8;--cocoa:#6b4c3b;--cocoa-l:#8b6455;--gold:#c4a882;--gold2:#d4b896;--pink:#c9a89a;--pink-l:#e0c8c0;--text:#3a2820;--tm:#6b4c3b;--ts:#9a7a70;--cb:#f5eeea;--sh:rgba(107,76,59,.15);}
-*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'EB Garamond',Georgia,serif;overflow-x:hidden;}
-.hero{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 24px 24px;text-align:center;background:linear-gradient(160deg,#f5ede8 0%,#ede0d8 40%,#e0d0c8 100%);}
-.hero-orn{font-size:17px;letter-spacing:.4em;color:var(--cocoa);font-weight:600;text-transform:uppercase;margin-bottom:16px;display:block;font-family:'Cormorant Garamond',serif;}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,9vw,76px);font-weight:300;color:var(--cocoa);margin-bottom:12px;line-height:1.05;}
-.hero-sub{font-size:25.2px;color:var(--ts);font-style:italic;margin-bottom:44px;max-width:380px;line-height:1.6;}
-.about{padding:36px 24px 24px;max-width:900px;margin:0 auto;text-align:center;}
-.about h2,.services h2,.how h2,.order h2{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,5vw,40px);font-weight:300;color:var(--cocoa);margin-bottom:20px;line-height:1.2;}
-.about p{font-size:23.8px;line-height:1.33;color:var(--tm);margin-bottom:14px;}
-.about-photo{width:264px;height:288px;border-radius:50%;object-fit:cover;object-position:center 2%;border:2px solid var(--gold2);box-shadow:0 8px 28px var(--sh);margin:0 auto 24px;display:block;}
-.orn{text-align:center;color:var(--gold);font-size:25.2px;letter-spacing:8px;margin:44px 0;opacity:.6;}
-.services{padding:0px 24px 48px;margin-top:-16px;background:linear-gradient(180deg,var(--bg) 0%,#e8ddd8 100%);}
-.svc-inner{max-width:700px;margin:0 auto;}
-.services h2,.services .ssub{text-align:center;}
-.ssub{color:var(--ts);font-style:italic;font-size:22.4px;margin-bottom:44px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
-.sc{background:var(--cb);border:1px solid var(--pink-l);border-radius:8px;padding:8px 12px;transition:all .3s;cursor:pointer;user-select:none;touch-action:manipulation;}
-.sc:hover{border-color:var(--gold);box-shadow:0 4px 16px var(--sh);transform:translateY(-2px);}
-.sc-name{font-family:'Cormorant Garamond',serif;font-size:23px;color:var(--text);margin-bottom:4px;font-weight:400;pointer-events:none;}
-.sc-desc{font-size:12px;color:var(--ts);line-height:1.4;pointer-events:none;}
-.sc-own{background:linear-gradient(135deg,var(--pink-l),#edddd6);border-color:var(--gold);}
-.how{padding:24px 24px;max-width:560px;margin:0 auto;text-align:center;}
-.order{padding:72px 24px;background:linear-gradient(160deg,#e8ddd8,#ddd0c8);}
-.order-in{max-width:720px;margin:0 auto;text-align:center;}
-.order h2{margin-bottom:8px;}
-.osub{color:var(--ts);font-style:italic;font-size:22.4px;margin-bottom:36px;}
-.oform{background:var(--cb);border-radius:16px;padding:28px;border:1px solid var(--pink-l);}
-.fg{margin-bottom:18px;text-align:left;}
-.fg label{font-size:15.4px;letter-spacing:.18em;color:var(--ts);text-transform:uppercase;display:block;margin-bottom:7px;}
-.fg select,.fg input,.fg textarea{width:100%;border:1px solid var(--pink-l);border-radius:8px;padding:11px 13px;font-size:21.0px;font-family:'EB Garamond',Georgia,serif;color:var(--text);background:#fff;outline:none;}
-.fg textarea{height:96px;resize:vertical;}
-.pdisplay{background:linear-gradient(135deg,var(--pink-l),#f0e4de);border-radius:8px;padding:14px;margin-bottom:22px;text-align:center;}
-.pdisplay span{font-family:'Cormorant Garamond',serif;font-size:42.0px;color:var(--cocoa);font-weight:600;}
-.pdisplay small{display:block;font-size:16.8px;color:var(--ts);margin-top:3px;}
-.btn-order{width:100%;padding:15px;background:#a0606e;color:#f5eeea;border:none;border-radius:8px;font-family:'Cormorant Garamond',serif;font-size:25.2px;letter-spacing:.1em;cursor:pointer;transition:background .3s;}
-.btn-order:disabled{opacity:.5;cursor:not-allowed;}
-#rs{display:none;padding:56px 24px;max-width:660px;margin:0 auto;}
-.rbox{background:var(--cb);border:1px solid var(--pink-l);border-radius:16px;padding:28px;}
-.rtitle{font-family:'Cormorant Garamond',serif;font-size:30.8px;color:var(--cocoa);margin-bottom:22px;text-align:center;}
-.rb{background:#fff;border-radius:10px;padding:18px;margin-bottom:12px;border:1px solid var(--pink-l);}
-.rb-name{font-family:'Cormorant Garamond',serif;font-size:22.4px;color:var(--cocoa);margin-bottom:7px;padding-bottom:7px;border-bottom:1px solid var(--pink-l);}
-.rb-text{font-size:21.0px;line-height:1.23;color:var(--tm);}
-.concl{background:linear-gradient(135deg,#f5ede8,#ede0d8);border-radius:10px;padding:18px;margin-bottom:18px;text-align:center;}
-.ct{font-family:'Cormorant Garamond',serif;font-size:16.8px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:9px;}
-.ctxt{font-size:22.4px;line-height:1.27;color:var(--tm);font-style:italic;}
-.btn-copy{width:100%;padding:12px;background:transparent;border:1px solid var(--pink);border-radius:8px;color:var(--cocoa);font-family:'Cormorant Garamond',serif;font-size:22.4px;cursor:pointer;transition:all .3s;}
-.btn-copy:hover{background:var(--pink-l);}
-.loading{text-align:center;padding:36px;color:var(--ts);font-style:italic;font-size:22.4px;}
-@media(max-width:480px){.grid{grid-template-columns:1fr;}.sc-own{grid-column:span 1!important;}}@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);}.order-in{max-width:100%;padding:0 8px;}}
-footer{padding:36px 24px;text-align:center;border-top:1px solid var(--pink-l);}
-footer p{font-size:18.2px;color:var(--ts);}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#f0e8e4;color:#3a2820;font-family:'EB Garamond',serif;line-height:1.3}
+.hero{text-align:center;padding:40px 24px 20px;background:linear-gradient(160deg,#f5ede8,#ede0d8)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:300;color:#6b4c3b}
+.hero-orn{font-size:26px;letter-spacing:0.2em;color:#6b4c3b;font-weight:500;margin-bottom:12px}
+.slogan{font-size:26px;color:#7e5e4a;margin-top:12px;font-family:'Cormorant Garamond',serif;font-weight:400}
+.about{max-width:800px;margin:0 auto;padding:32px 24px;text-align:center}
+.about p{font-size:20px;color:#6b4c3b;line-height:1.4}
+.calc-wrapper{max-width:800px;margin:0 auto 48px;background:#f5eeea;border-radius:36px;padding:28px;border:1px solid #e0c8c0;box-shadow:0 8px 24px rgba(0,0,0,0.05)}
+.type-selector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+.type-btn{background:#e2c2b5;border:none;padding:10px 8px;border-radius:8px;font-size:15px;font-family:'Cormorant Garamond',serif;font-weight:500;cursor:pointer;transition:0.2s;color:#3a2820;text-align:center}
+.type-btn.active{background:#c4a882;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.1)}
+.symbolic-text{font-size:12px;color:#9a7a70;text-align:center;margin-top:8px;margin-bottom:20px;font-style:italic}
+.field{margin-bottom:24px}
+label{display:block;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:#9a7a70;margin-bottom:8px}
+input{width:100%;padding:12px 16px;font-family:'EB Garamond',serif;font-size:18px;border:1px solid #e0c8c0;border-radius:60px;background:#fff}
+.button-group{display:flex;gap:16px;margin-bottom:24px}
+.button-group button{flex:1;padding:12px;font-size:18px;border-radius:60px;cursor:pointer;font-family:'Cormorant Garamond',serif;font-weight:500;border:none}
+.calc-btn{background:#e2c2b5;color:#3a2820}
+.detail-btn{background:#efd5c9;color:#3a2820}
+.result{background:#fef6ef;padding:18px;border-radius:24px;border-left:4px solid #c4a882;font-size:16px;line-height:1.45}
+.full-result{display:none;margin-top:20px;background:#e8ddd8;padding:18px;border-radius:24px;font-size:16px;line-height:1.45}
+footer{text-align:center;padding:40px 24px;border-top:1px solid #e0c8c0;color:#9a7a70;font-size:14px}
+footer a{color:#9a7a70;text-decoration:none;border-bottom:1px dotted #c4a882}
+.disclaimer{font-size:12px;color:#9a7a70;max-width:600px;margin:16px auto 0}
+@media (max-width:700px){.hero h1{font-size:42px}.hero-orn{font-size:20px}.slogan{font-size:20px}.type-selector-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-<section class="hero" style="padding-top:20px;padding-bottom:20px;">
-  <div class="hero-orn">нумерология</div>
-  <h1>Яна Белова</h1>
-  <p class="hero-sub" style="font-size:24px;margin-top:8px;margin-bottom:8px;">
-    Числа говорят о вас больше, чем вы думаете.<br>
-    Узнайте код своей судьбы.
-  </p>
-</section>
-
-<section class="about">
-  <img class="about-photo" src="data:image/jpeg;base64,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" alt="Яна Белова">
-  <p>Числа не случайны. Они сопровождают вас с рождения, хранят код вашей личности, талантов и предназначения. Нумерология помогает расшифровать этот код, чтобы вы лучше поняли себя и свой путь.</p>
-  <p>Всё, что вам нужно, — ваша дата рождения. Остальное сделают числа.</p>
-  <div class="orn">✦ ✦ ✦</div>
-</section>
-
-<section class="services">
-  <div class="svc-inner">
-    <h2>○ Выберите тип расчёта</h2>
-    <p class="ssub">Один расчёт — 299 ₽</p>
-    <div class="grid" id="cardsGrid">
-      <div class="sc" data-spread="lifepath"><div class="sc-name">○ Число жизненного пути</div><p class="sc-desc">Главное число судьбы. Ваша миссия, таланты и направление развития.</p></div>
-      <div class="sc" data-spread="soul"><div class="sc-name">○ Число души</div><p class="sc-desc">Ваши истинные желания, внутренний мир и то, что делает вас счастливым.</p></div>
-      <div class="sc" data-spread="destiny"><div class="sc-name">○ Число судьбы</div><p class="sc-desc">Задачи, которые вы пришли решить в этой жизни, и внешние обстоятельства.</p></div>
-      <div class="sc" data-spread="personality"><div class="sc-name">○ Число личности</div><p class="sc-desc">Как вас видят окружающие, ваши сильные стороны в общении.</p></div>
-      <div class="sc" data-spread="maturity"><div class="sc-name">○ Число зрелости</div><p class="sc-desc">К чему вы придёте во второй половине жизни, ваше высшее развитие.</p></div>
-      <div class="sc sc-own" data-spread="full"><div class="sc-name" style="font-size:25px;">○ Полный нумерологический разбор</div><p class="sc-desc" style="margin:0;">Все основные числа + подробная расшифровка по дате рождения</p></div>
+<div class="hero">
+    <div class="hero-orn">нумерология</div>
+    <h1>Яна Белова</h1>
+    <div class="slogan">Каждое число в вашей дате рождения — ключ к вашей истинной сути. Откройте его.</div>
+</div>
+<div class="about">
+    <p>Краткий расчёт — бесплатно. Полная расшифровка — 30 ₽ за любой выбор. Нажмите «Рассчитать» для краткого ответа, «Подробнее» — для полного.</p>
+</div>
+<div class="calc-wrapper">
+    <div class="type-selector-grid" id="typeSelector"></div>
+    <div class="symbolic-text">✨ Символическая оплата — это уважение к твоему же запросу. Когда мы вкладываем даже немного — относимся серьёзнее. Это работает.</div>
+    <div class="field" id="inputField"></div>
+    <div class="button-group">
+        <button class="calc-btn" id="calcBtn">🔮 Рассчитать</button>
+        <button class="detail-btn" id="detailBtn">📖 Подробнее</button>
     </div>
-  </div>
-</section>
-
-<section class="order" id="order">
-  <div class="order-in">
-    <h2>○ Получите свой код</h2>
-    <p class="osub">Введите дату рождения</p>
-    <div class="oform">
-      <div class="fg">
-        <label>Тип расчёта</label>
-        <select id="spreadSelect">
-          <option value="">— Выберите расчёт —</option>
-          <option value="lifepath">○ Число жизненного пути</option>
-          <option value="soul">○ Число души</option>
-          <option value="destiny">○ Число судьбы</option>
-          <option value="personality">○ Число личности</option>
-          <option value="maturity">○ Число зрелости</option>
-          <option value="full">○ Полный нумерологический разбор</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>Дата рождения</label>
-        <input type="text" id="birthInput" placeholder="Например: 15.03.1985 или 15 марта 1985">
-        <p style="font-size:12px; color:var(--ts); margin-top:4px;">День, месяц, год — мы извлечём числа</p>
-      </div>
-      <div class="pdisplay">
-        <span>299 ₽</span>
-        <small>Тестовый режим оплаты</small>
-      </div>
-      <button class="btn-order" id="orderBtn">🔢 Рассчитать</button>
-    </div>
-  </div>
-</section>
-
-<section id="rs">
-  <div class="rbox">
-    <div class="rtitle">Ваш нумерологический разбор</div>
-    <div id="resultContent" class="loading">🔢 Ожидание расчёта...</div>
-    <button class="btn-copy" id="copyBtn">📋 Скопировать разбор</button>
-  </div>
-</section>
-
+    <div class="result" id="resultArea">Выберите тип расчёта и введите данные</div>
+    <div class="full-result" id="fullArea"></div>
+</div>
 <footer>
-  <p>© Яна Белова · Нумерология · 2025</p>
-  <p style="margin-top:4px;">Самозанятая · ИНН: 430501352204</p>
-  <p style="margin-top:6px;">Связь: <span style="color:var(--gold);">7novna&#64;mail&#46;ru</span></p>
-  <p style="margin-top:5px;font-size:11px;color:var(--ts);line-height:1.5;">Все материалы носят информационно-образовательный характер. Не являются предсказанием или медицинской консультацией.</p>
+    <div>© Яна Белова · Психология · 2025</div>
+    <div>Самозанятая · ИНН: 430501352204</div>
+    <div>Связь: <a href="mailto:7novna@mail.ru">7novna@mail.ru</a></div>
+    <div class="disclaimer">Информация на сайте — для саморазвития. Она не заменяет профессиональную консультацию. Ответственность за принятые решения остаётся за вами.</div>
 </footer>
 
 <script>
-// ------------------- нумерологические расчёты -------------------
-function reduceToRoot(num) {
-  if (isNaN(num) || num === 0) return 0;
-  let n = num;
-  while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
-    n = String(n).split('').reduce((s,d)=> s+parseInt(d),0);
-  }
-  return n;
+// ---------- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ----------
+function parseDate(s){if(!s)return null;let c=s.replace(/[^0-9]/g,' '),p=c.trim().split(/\s+/).map(Number);if(p.length<3)return null;let[d,m,y]=p;if(d<1||d>31||m<1||m>12||y<1000||y>2100)return null;return{day:d,month:m,year:y}}
+function reduceToSingle(n,k){if(k&&(n===11||n===22||n===33))return n;while(n>9&&n!==11&&n!==22&&n!==33)n=String(n).split('').reduce((s,d)=>s+ +d,0);return n}
+function reduceTo22(n){while(n>22)n=String(n).split('').reduce((s,d)=>s+ +d,0);return n}
+function sumDate(d){return d.day+d.month+d.year}
+function nameToNumber(n){const m={'а':1,'б':2,'в':3,'г':4,'д':5,'е':6,'ё':6,'ж':7,'з':8,'и':9,'й':1,'к':2,'л':3,'м':4,'н':5,'о':6,'п':7,'р':8,'с':9,'т':1,'у':2,'ф':3,'х':4,'ц':5,'ч':6,'ш':7,'щ':8,'ъ':9,'ы':1,'ь':2,'э':3,'ю':4,'я':5};let s=0;for(let ch of n.toLowerCase())if(m[ch])s+=m[ch];return reduceToSingle(s)}
+function buildMatrixDestiny(d){let p1=reduceTo22(d.day),p2=reduceTo22(d.month),p3=reduceTo22(d.year),p4=reduceTo22(p1+p2),p5=reduceTo22(p1+p2+p3),p6=reduceTo22(p2+p3),p7=reduceTo22(p1+p2+p3+p4),p8=reduceTo22(p4+p5+p6),p9=reduceTo22(p1+p2+p3+p4+p5+p6),p10=reduceTo22(p1+p2+p3+p4+p5+p6+p7+p8+p9);return{p1,p2,p3,p4,p5,p6,p7,p8,p9,p10}}
+function fourDigitCode(d){let a=reduceToSingle(d.day),b=reduceToSingle(d.month),c=reduceToSingle(d.year);return a+'-'+b+'-'+c+'-'+reduceToSingle(a+b+c)}
+function getPythagorasCounts(d){let s=''+d.day+d.month+d.year,c={};for(let i=1;i<=9;i++)c[i]=0;for(let ch of s){let n=parseInt(ch);if(n>=1&&n<=9)c[n]++}return c}
+function addAutoDot(i){i.addEventListener('input',function(e){let v=e.target.value.replace(/[^0-9]/g,'');if(v.length>=2)v=v.slice(0,2)+'.'+v.slice(2);if(v.length>=5)v=v.slice(0,5)+'.'+v.slice(5,9);if(v.length>10)v=v.slice(0,10);e.target.value=v})}
+
+// ---------- КРАТКИЕ ОПИСАНИЯ (бесплатно) ----------
+function briefExpression(n){let b='';if(n===1)b='Вы лидер, новатор. Действуйте смело, берите инициативу.';else if(n===2)b='Вы дипломат, миротворец. Успех через партнёрство.';else if(n===3)b='Вы творец, оптимист. Реализация через искусство, общение.';else if(n===4)b='Вы строитель, опора. Деньги через долгосрочные проекты.';else if(n===5)b='Вы учитель, путешественник. Деньги в движении, обучении.';else if(n===6)b='Вы хранитель гармонии. Деньги через любовь и красоту.';else if(n===7)b='Вы мудрец, исследователь. Деньги в познании, доверии к себе.';else if(n===8)b='Вы управленец, защитник. Деньги через честность, управление.';else b='Вы завершитель, наставник. Деньги через служение.';return `Число внутреннего Я ${n} — сумма всех цифр даты рождения. Показывает, как лучше проявлять себя. ${b}`}
+function briefArcana(n){return `Ваш аркан: ${n}. Это ключевая энергия вашей личности.`}
+function briefSoul(s){let b='';if(s===1)b='Независимость, лидерство.';else if(s===2)b='Гармония, партнёрство.';else if(s===3)b='Творчество, общение.';else if(s===4)b='Стабильность, порядок.';else if(s===5)b='Свобода, перемены.';else if(s===6)b='Любовь, семья.';else if(s===7)b='Глубина, познание.';else if(s===8)b='Власть, успех.';else b='Служение, завершение.';return `Число души ${s} — ваши истинные желания. ${b}`}
+function briefKarma(n){let b='';if(n===1)b='Учитесь самостоятельности.';else if(n===2)b='Развивайте дипломатию.';else if(n===3)b='Осваивайте творчество.';else if(n===4)b='Стройте стабильность.';else if(n===5)b='Принимайте перемены.';else if(n===6)b='Учитесь любви без привязанности.';else if(n===7)b='Познавайте себя.';else if(n===8)b='Управляйте деньгами без жадности.';else b='Учитесь прощать, отпускать.';return `Кармические задачи = ${n}. ${b}`}
+function briefName(n){let b='';if(n===1)b='Лидер, самостоятельность.';else if(n===2)b='Дипломат, умение слушать.';else if(n===3)b='Оптимизм, творчество.';else if(n===4)b='Надёжность, ответственность.';else if(n===5)b='Свобода, живость ума.';else if(n===6)b='Забота, тепло.';else if(n===7)b='Мудрость, глубина.';else if(n===8)b='Уверенность, деловая хватка.';else b='Наставничество, щедрость.';return `Число имени ${n}. Как вас видят: ${b}`}
+function briefYear(n){let b='';if(n===1)b='Год новых начинаний.';else if(n===2)b='Год партнёрства.';else if(n===3)b='Год творчества.';else if(n===4)b='Год труда.';else if(n===5)b='Год перемен.';else if(n===6)b='Год любви.';else if(n===7)b='Год анализа.';else if(n===8)b='Год успеха.';else b='Год завершения.';return `Личное число года: ${n}. ${b}`}
+function briefGematria(c){let b='';if(c===1)b='Энергия начала.';else if(c===2)b='Энергия гармонии.';else if(c===3)b='Энергия творчества.';else if(c===4)b='Энергия стабильности.';else if(c===5)b='Энергия свободы.';else if(c===6)b='Энергия любви.';else if(c===7)b='Энергия мудрости.';else if(c===8)b='Энергия власти.';else b='Энергия завершения.';return `Код слова = ${c}. ${b}`}
+function briefWealth(dt){let s=''+dt.day+dt.month+dt.year,r=[],p=[];for(let ch of s){let n=parseInt(ch);if([3,6,8].includes(n))r.push(n);if([1,2,7].includes(n))p.push(n)}return `Код богатства: ${r.length?'цифры богатства '+r.join(',')+' — ':'нет цифр богатства, '}${p.length?'цифры бедности '+p.join(',')+' — ':'нет цифр бедности, '}.`}
+function briefTalent(c){return `Код таланта: ${c}.`}
+function briefPythagoras(c){let g='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#fff3e8;padding:12px;border-radius:20px;margin-bottom:12px">';for(let i=1;i<=9;i++)g+=`<div style="background:#f5e5d8;padding:12px 4px;text-align:center;border-radius:16px;font-size:20px;font-weight:700;color:#6b4c3b">${i}<br><small style="font-size:11px;font-weight:400;color:#9a7a70">${c[i]}</small></div>`;g+='</div>';let t='';t+=c[1]==0?'Нет единиц — нужна поддержка. ':(c[1]==1?'Одна единица — характер формируется. ':(c[1]==2?'Две единицы — воля, самостоятельность. ':'Три+ единиц — сильный лидер. '));t+=c[2]==0?'Нет двоек — энергия требует внимания. ':(c[2]==1?'Одна двойка — чувствительность. ':'Две+ двоек — отличная энергетика. ');t+=c[3]==0?'Нет троек — интерес к наукам слаб. ':(c[3]==1?'Одна тройка — способности к наукам. ':'Две+ троек — изобретательность. ');t+=c[4]==0?'Нет четвёрок — здоровье требует внимания. ':(c[4]==1?'Одна четвёрка — среднее здоровье. ':'Две+ четвёрок — крепкое здоровье. ');t+=c[5]==0?'Нет пятёрок — развивайте интуицию. ':(c[5]==1?'Одна пятёрка — логика и интуиция. ':'Две+ пятёрок — ясновидение. ');t+=c[6]==0?'Нет шестёрок — учитесь заботе. ':(c[6]==1?'Одна шестёрка — склонность к труду. ':'Две+ шестёрок — надёжность. ');t+=c[7]==0?'Нет семёрок — нужна удача. ':(c[7]==1?'Одна семёрка — везение непостоянно. ':'Две+ семёрок — талант, защита. ');t+=c[8]==0?'Нет восьмёрок — развивайте чувство долга. ':(c[8]==1?'Одна восьмёрка — чувство долга есть. ':'Две+ восьмёрок — гиперответственность. ');t+=c[9]==0?'Нет девяток — тренируйте память. ':(c[9]==1?'Одна девятка — средняя память. ':'Две+ девяток — отличная память. ');return g+t}
+function briefMatrix(m){let g='<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#fff3e8;padding:12px;border-radius:20px;margin-bottom:12px">';[m.p7,m.p8,m.p9,m.p4,m.p5,m.p6,m.p1,m.p2,m.p3].forEach(v=>g+=`<div style="background:#f5e5d8;padding:12px 4px;text-align:center;border-radius:16px;font-size:20px;font-weight:700;color:#6b4c3b">${v}</div>`);g+='</div>';return g+`Нижний ряд (${m.p1},${m.p2},${m.p3}) — задачи до 28 лет. Средний (${m.p4},${m.p5},${m.p6}) — испытания 28–42 лет. Верхний (${m.p7},${m.p8},${m.p9}) — миссия после 42. Центр (${m.p10}) — главный аркан.`}
+
+// ---------- ПОЛНЫЕ ОПИСАНИЯ (платные заглушки) ----------
+const fullTexts = {
+    expression: (n) => `Полное описание числа внутреннего Я ${n}. Здесь будет 5–7 предложений с глубокой трактовкой.`,
+    arcana: (n) => `Полное описание аркана ${n}.`,
+    soul: (d) => `Полное описание числа души.`,
+    nameNumber: (n) => `Полное описание числа имени.`,
+    compatibility: (n) => `Полное описание совместимости.`,
+    wealth: (d) => `Полное описание кода богатства.`,
+    yearNumber: (d) => `Полное описание числа года.`,
+    karmaTasks: (n) => `Полное описание кармических задач.`,
+    talentCode: (c) => `Полное описание кода таланта.`,
+    pythagoras: (c) => `Полное описание квадрата Пифагора.`,
+    matrixDestiny: (m) => `Полное описание матрицы судьбы.`,
+    gematria: (w) => `Полное описание гематрии.`
+};
+
+// ---------- ДАННЫЕ КАЛЬКУЛЯТОРОВ ----------
+const types = [
+    { id: 'innerSelf', name: 'Число внутреннего Я', fields: ['date'], brief: (v) => briefExpression(reduceToSingle(sumDate(parseDate(v[0])))),
+      full: (v) => fullTexts.expression(reduceToSingle(sumDate(parseDate(v[0])))) },
+    { id: 'arcana', name: 'Аркан судьбы', fields: ['date'], brief: (v) => briefArcana(reduceTo22(sumDate(parseDate(v[0])))),
+      full: (v) => fullTexts.arcana(reduceTo22(sumDate(parseDate(v[0])))) },
+    { id: 'soul', name: 'Число души (число сердца)', fields: ['date'], brief: (v) => briefSoul(reduceToSingle(parseDate(v[0]).day)),
+      full: (v) => fullTexts.soul(v[0]) },
+    { id: 'karma', name: 'Кармические задачи', fields: ['date'], brief: (v) => briefKarma(reduceToSingle(parseDate(v[0]).day+parseDate(v[0]).month)),
+      full: (v) => fullTexts.karmaTasks(reduceToSingle(parseDate(v[0]).day+parseDate(v[0]).month)) },
+    { id: 'name', name: 'Число имени', fields: ['text'], brief: (v) => briefName(nameToNumber(v[0])),
+      full: (v) => fullTexts.nameNumber(nameToNumber(v[0])) },
+    { id: 'compatibility', name: 'Совместимость в паре', fields: ['date','date'], brief: (v) => { let d1=parseDate(v[0]),d2=parseDate(v[1]); let s=reduceTo22(sumDate(d1)+sumDate(d2)); return `Энергия союза: аркан ${s}.`; },
+      full: (v) => { let d1=parseDate(v[0]),d2=parseDate(v[1]); return fullTexts.compatibility(reduceTo22(sumDate(d1)+sumDate(d2))); } },
+    { id: 'wealth', name: 'Код богатства', fields: ['date'], brief: (v) => briefWealth(parseDate(v[0])),
+      full: (v) => fullTexts.wealth(v[0]) },
+    { id: 'year', name: 'Личное число года', fields: ['date'], brief: (v) => briefYear(reduceToSingle(reduceToSingle(sumDate(parseDate(v[0]))) + new Date().getFullYear())),
+      full: (v) => fullTexts.yearNumber(v[0]) },
+    { id: 'gematria', name: 'Каббалистическая гематрия', fields: ['text'], brief: (v) => { let w=v[0]; if(!w.trim()) return "Введите слово"; let s=0,m={'а':1,'б':2,'в':3,'г':4,'д':5,'е':6,'ё':6,'ж':7,'з':8,'и':9,'й':1,'к':2,'л':3,'м':4,'н':5,'о':6,'п':7,'р':8,'с':9,'т':1,'у':2,'ф':3,'х':4,'ц':5,'ч':6,'ш':7,'щ':8,'ъ':9,'ы':1,'ь':2,'э':3,'ю':4,'я':5}; for(let ch of w.toLowerCase()) if(m[ch]) s+=m[ch]; let c=reduceToSingle(s); return briefGematria(c); },
+      full: (v) => fullTexts.gematria(v[0]) },
+    { id: 'pythagoras', name: 'Квадрат Пифагора', fields: ['date'], brief: (v) => briefPythagoras(getPythagorasCounts(parseDate(v[0]))),
+      full: (v) => fullTexts.pythagoras(getPythagorasCounts(parseDate(v[0]))) },
+    { id: 'matrix', name: 'Матрица судьбы', fields: ['date'], brief: (v) => briefMatrix(buildMatrixDestiny(parseDate(v[0]))),
+      full: (v) => fullTexts.matrixDestiny(buildMatrixDestiny(parseDate(v[0]))) },
+    { id: 'talent', name: 'Код таланта', fields: ['date'], brief: (v) => briefTalent(fourDigitCode(parseDate(v[0]))),
+      full: (v) => fullTexts.talentCode(fourDigitCode(parseDate(v[0]))) }
+];
+
+let currentType = types[0];
+let currentInputs = [];
+
+function renderTypeSelector() {
+    const container = document.getElementById('typeSelector');
+    container.innerHTML = '';
+    types.forEach((t, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'type-btn' + (t === currentType ? ' active' : '');
+        btn.textContent = t.name;
+        btn.onclick = () => {
+            currentType = t;
+            renderTypeSelector();
+            renderInputFields();
+            document.getElementById('resultArea').innerHTML = 'Выберите тип расчёта и введите данные';
+            document.getElementById('fullArea').style.display = 'none';
+        };
+        container.appendChild(btn);
+    });
 }
 
-function parseDate(dateStr) {
-  let cleaned = dateStr.replace(/[^0-9]/g, ' ');
-  let numbers = cleaned.trim().split(/\s+/).filter(x=>x).map(Number);
-  if (numbers.length < 3) return null;
-  let day = numbers[0], month = numbers[1], year = numbers[2];
-  if (day<1 || day>31 || month<1 || month>12 || year<1000 || year>2100) return null;
-  return { day, month, year };
+function renderInputFields() {
+    const container = document.getElementById('inputField');
+    container.innerHTML = '';
+    currentInputs = [];
+    currentType.fields.forEach((type, i) => {
+        const fieldDiv = document.createElement('div');
+        fieldDiv.style.marginBottom = '16px';
+        const label = document.createElement('label');
+        if (currentType.id === 'compatibility') {
+            label.textContent = i === 0 ? 'Дата партнёра 1' : 'Дата партнёра 2';
+        } else if (type === 'date') {
+            label.textContent = 'Дата рождения';
+        } else {
+            label.textContent = 'Слово / имя';
+        }
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = type === 'date' ? 'ДД.ММ.ГГГГ' : 'введите текст';
+        if (type === 'date') addAutoDot(input);
+        fieldDiv.appendChild(label);
+        fieldDiv.appendChild(input);
+        container.appendChild(fieldDiv);
+        currentInputs.push(input);
+    });
 }
 
-function computeNumbers(date) {
-  const d = date.day, m = date.month, y = date.year;
-  const lifePath = reduceToRoot( d + m + y );
-  const soul = reduceToRoot(d);
-  const destiny = reduceToRoot(m + y);
-  const personality = reduceToRoot(m);
-  const maturity = reduceToRoot(lifePath + destiny);
-  return { lifePath, soul, destiny, personality, maturity };
+function getValues() {
+    return currentInputs.map(inp => inp.value);
 }
 
-// чистые интерпретации без призывов к специалистам
-function interpretNumber(num, type) {
-  const map = {
-    1: { text: "Лидерство, независимость, инициатива. Вы прокладываете путь, вдохновляете других. Важно не бояться быть первым." },
-    2: { text: "Дипломатичность, чувствительность, сотрудничество. Вы создаёте гармонию и цените партнёрства." },
-    3: { text: "Творчество, оптимизм, самовыражение. Ваш дар — вдохновлять и радовать окружающих." },
-    4: { text: "Стабильность, трудолюбие, порядок. Вы строите надёжные основы для жизни и дел." },
-    5: { text: "Свобода, перемены, приключения. Вы легко адаптируетесь и приносите свежие идеи." },
-    6: { text: "Ответственность, забота, семья. Ваша сила — в любви и поддержке близких." },
-    7: { text: "Анализ, мудрость, духовность. Вы ищете глубинные истины и цените уединение для познания." },
-    8: { text: "Сила, материальный успех, управление. Вы способны воплощать масштабные проекты." },
-    9: { text: "Гуманизм, завершение циклов, сострадание. Ваша миссия — служение и отпускание старого." },
-    11: { text: "Мастер-число: интуиция, вдохновение, духовный учитель. Вы обладаете особым каналом восприятия." },
-    22: { text: "Мастер-строитель: воплощение грандиозных идей, созидание на благо многих." },
-    33: { text: "Мастер-целитель: безусловная любовь, наставничество, трансформация через сострадание." }
-  };
-  let base = map[num] || { text: "Уникальная комбинация энергий. Ваш путь раскрывается через самопознание." };
-  let prefix = "";
-  if (type === 'lifePath') prefix = "Число жизненного пути: ";
-  else if (type === 'soul') prefix = "Число души: ";
-  else if (type === 'destiny') prefix = "Число судьбы: ";
-  else if (type === 'personality') prefix = "Число личности: ";
-  else if (type === 'maturity') prefix = "Число зрелости: ";
-  return `${prefix}${num}. ${base.text}`;
-}
-
-function getFullInterpretation(date) {
-  const nums = computeNumbers(date);
-  let blocks = [];
-  blocks.push(interpretNumber(nums.lifePath, 'lifePath'));
-  blocks.push(interpretNumber(nums.soul, 'soul'));
-  blocks.push(interpretNumber(nums.destiny, 'destiny'));
-  blocks.push(interpretNumber(nums.personality, 'personality'));
-  blocks.push(interpretNumber(nums.maturity, 'maturity'));
-  blocks.push(`✨ Взаимосвязь: число жизненного пути (${nums.lifePath}) задаёт направление, число души (${nums.soul}) — внутренние мотивы, судьба (${nums.destiny}) раскрывает внешние задачи. Зрелость (${nums.maturity}) объединяет ваш опыт. Эти коды работают вместе, формируя уникальный портрет.`);
-  return blocks.join('\n\n');
-}
-
-// helpers для чистки (по запросу пользователя)
-function cleanText(str) { if(!str) return ''; return str.replace(/[^\u0400-\u04FF\s\n.,!?\-:;"'()]/g, '').replace(/\s+/g, ' ').trim(); }
-function removeReferralToSpecialist(str) { if(!str) return ''; return str.replace(/обратитесь к (?:психологу|специалисту)/gi,'').replace(/поговорите с (?:психологом|специалистом)/gi,'').replace(/найдите (?:доверенного человека|психолога|специалиста)/gi,'').replace(/просить помощи/gi,'').replace(/обратиться за помощью/gi,''); }
-function fixIncompleteSentences(str) { if(!str) return ''; str = str.replace(/и их\.\s*/gi,'и их принятия. ').replace(/и их\s*$/gi,'и их принятия.'); return str; }
-
-// итоговая чистка
-function polishResponse(text) {
-  let t = cleanText(text);
-  t = removeReferralToSpecialist(t);
-  t = fixIncompleteSentences(t);
-  return t.trim();
-}
-
-// -------- UI логика ----------
-let currentSpread = "";
-
-function selectSpread(spreadId) {
-  const select = document.getElementById('spreadSelect');
-  if (select) select.value = spreadId;
-  currentSpread = spreadId;
-  document.querySelectorAll('.sc').forEach(card => {
-    if (card.getAttribute('data-spread') === spreadId) {
-      card.style.borderColor = "var(--gold)";
-      card.style.boxShadow = "0 4px 16px var(--sh)";
-    } else {
-      card.style.borderColor = "var(--pink-l)";
-      card.style.boxShadow = "none";
+function validate(values) {
+    for (let i = 0; i < currentType.fields.length; i++) {
+        if (currentType.fields[i] === 'date') {
+            if (!parseDate(values[i])) return false;
+        } else if (!values[i]?.trim()) return false;
     }
-  });
+    return true;
 }
 
-document.querySelectorAll('.sc').forEach(card => {
-  card.addEventListener('click', () => {
-    const spread = card.getAttribute('data-spread');
-    if (spread) selectSpread(spread);
-  });
-});
-
-document.getElementById('spreadSelect').addEventListener('change', (e) => {
-  currentSpread = e.target.value;
-  selectSpread(currentSpread);
-});
-
-// симуляция оплаты + показ результата
-function startReading() {
-  const spread = currentSpread || document.getElementById('spreadSelect').value;
-  if (!spread) {
-    alert("Выберите тип расчёта");
-    return;
-  }
-  const birthStr = document.getElementById('birthInput').value.trim();
-  if (!birthStr) {
-    alert("Введите дату рождения");
-    return;
-  }
-  const dateObj = parseDate(birthStr);
-  if (!dateObj) {
-    alert("Не удалось распознать дату. Пример: 15.03.1985 или 15 марта 1985");
-    return;
-  }
-
-  // тестовая оплата (демо)
-  if (!confirm("🔮 Тестовый режим: нажмите ОК для имитации оплаты 299₽. Деньги не списываются.")) return;
-
-  // показываем секцию результата
-  const rsSection = document.getElementById('rs');
-  const resultDiv = document.getElementById('resultContent');
-  rsSection.style.display = "block";
-  resultDiv.innerHTML = '<div class="loading">🔢 Вычисляем ваши числа... Пожалуйста, подождите.</div>';
-  setTimeout(() => {
-    let finalText = "";
-    if (spread === 'full') {
-      finalText = getFullInterpretation(dateObj);
-    } else {
-      const nums = computeNumbers(dateObj);
-      let num = 0;
-      switch(spread) {
-        case 'lifepath': num = nums.lifePath; break;
-        case 'soul': num = nums.soul; break;
-        case 'destiny': num = nums.destiny; break;
-        case 'personality': num = nums.personality; break;
-        case 'maturity': num = nums.maturity; break;
-        default: num = nums.lifePath;
-      }
-      finalText = interpretNumber(num, spread);
+document.getElementById('calcBtn').onclick = () => {
+    const vals = getValues();
+    if (!validate(vals)) {
+        document.getElementById('resultArea').innerHTML = '❌ Неверные данные. Проверьте формат даты (ДД.ММ.ГГГГ) или заполните все поля.';
+        return;
     }
-    finalText = polishResponse(finalText);
-    resultDiv.innerHTML = `<div class="rb"><div class="rb-name">✨ Результат расчёта</div><div class="rb-text">${finalText.replace(/\n/g, '<br>')}</div></div>`;
-  }, 300);
-}
+    const result = currentType.brief(vals);
+    document.getElementById('resultArea').innerHTML = result;
+    document.getElementById('fullArea').style.display = 'none';
+};
 
-document.getElementById('orderBtn').addEventListener('click', startReading);
+document.getElementById('detailBtn').onclick = () => {
+    const vals = getValues();
+    if (!validate(vals)) {
+        alert('Сначала корректно заполните данные и нажмите «Рассчитать»');
+        return;
+    }
+    if (confirm(`Тестовый режим: оплатить полную расшифровку (30 ₽). Деньги не списываются.`)) {
+        const full = currentType.full(vals);
+        const fullDiv = document.getElementById('fullArea');
+        fullDiv.innerHTML = full;
+        fullDiv.style.display = 'block';
+    }
+};
 
-document.getElementById('copyBtn').addEventListener('click', () => {
-  const resultDiv = document.getElementById('resultContent');
-  let text = resultDiv.innerText || resultDiv.textContent;
-  if (!text || text.includes("Ожидание расчёта")) {
-    alert("Сначала выполните расчёт");
-    return;
-  }
-  navigator.clipboard.writeText(text).then(() => alert("Разбор скопирован в буфер обмена")).catch(() => alert("Не удалось скопировать"));
-});
-
-// начальная подсветка если уже выбран (по умолчанию lifepath)
-selectSpread('lifepath');
+renderTypeSelector();
+renderInputFields();
 </script>
 </body>
 </html>
