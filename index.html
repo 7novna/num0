@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Основы веб-разработки — Интерактивный курс</title>
+<title>Основы веб-разработки</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -20,7 +20,7 @@
     --html: #b56b4b;
     --css: #5a7b9b;
     --js: #9b8b5a;
-    --slide-bg: #fcf6f2; /* На 2 тона светлее основного фона */
+    --slide-bg: #fcf6f2;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -31,38 +31,33 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 1rem 2rem;
-    line-height: 1.6;
+    padding: 0.75rem 0.5rem 1.5rem;
+    line-height: 1.5;
   }
-  .container { width: 100%; max-width: 680px; position: relative; z-index: 1; }
+  .container { width: 100%; max-width: 400px; position: relative; z-index: 1; }
 
-  header { margin-bottom: 1.25rem; text-align: center; }
-  .logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 0.5rem; }
-  .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
-  .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
-  h1 { font-size: clamp(20px, 5vw, 24px); font-weight: 600; margin-bottom: 0.25rem; }
-  .subtitle { font-size: 13px; color: var(--muted); }
+  header { margin-bottom: 0.75rem; text-align: center; }
+  .logo { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 0.3rem; }
+  .logo-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+  .logo-text { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+  h1 { font-size: 18px; font-weight: 600; margin-bottom: 0.15rem; }
+  .subtitle { font-size: 11px; color: var(--muted); }
 
-  /* Slider Container */
-  .slider-section { margin-bottom: 1.5rem; }
+  .slider-section { margin-bottom: 1rem; position: relative; }
   .slider-title {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--accent);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
   }
   .slider-wrapper {
     position: relative;
     background: var(--surface);
     border: 2px solid var(--border);
-    border-radius: 14px;
+    border-radius: 10px;
     overflow: hidden;
-    min-height: 340px;
+    min-height: 320px;
   }
   .slider {
     display: flex;
@@ -71,11 +66,10 @@
   }
   .slide {
     min-width: 100%;
-    padding: 1.5rem;
+    padding: 1rem;
     background: var(--slide-bg);
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
   
   .slider-nav {
@@ -89,241 +83,210 @@
     height: 32px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
     z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
-  .slider-nav:hover { background: var(--accent-hover); transform: translateY(-50%) scale(1.1); }
-  .slider-nav.prev { left: 8px; }
-  .slider-nav.next { right: 8px; }
-  .slider-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+  .slider-nav.prev { left: -16px; }
+  .slider-nav.next { right: -16px; }
+  .slider-nav:active { background: var(--accent-hover); }
   
   .slider-dots {
     display: flex;
     justify-content: center;
-    gap: 6px;
-    margin-top: 0.6rem;
+    gap: 4px;
+    margin-top: 0.5rem;
   }
   .dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: var(--border);
     cursor: pointer;
-    transition: all 0.2s;
   }
-  .dot.active { background: var(--accent); width: 20px; border-radius: 4px; }
+  .dot.active { background: var(--accent); width: 16px; border-radius: 3px; }
   
   .slide-counter {
     text-align: center;
-    font-size: 11px;
+    font-size: 9px;
     color: var(--hint);
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* Visual Game Elements */
   .game-scene {
     background: linear-gradient(180deg, #e8ddd4 0%, #f5ebe0 100%);
-    border-radius: 10px;
-    padding: 1.25rem;
-    margin: 0.75rem 0;
-    min-height: 140px;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    min-height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    border: 2px dashed var(--border);
+    border: 1px dashed var(--border);
+    flex-wrap: wrap;
+    gap: 0.4rem;
   }
-  .game-element {
-    font-size: 48px;
-    margin: 0 0.5rem;
-    animation: bounce 2s infinite;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-  .game-arrow {
-    font-size: 24px;
-    color: var(--accent);
-    animation: moveArrow 1.5s infinite;
-  }
-  @keyframes moveArrow {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
-  }
-  .plus-sign {
-    font-size: 28px;
-    color: var(--hint);
-    font-weight: bold;
-  }
-  .result-box {
-    background: white;
-    border: 3px solid var(--accent);
-    border-radius: 10px;
-    padding: 1rem;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    box-shadow: 0 4px 12px rgba(166, 123, 107, 0.2);
-  }
+  .game-element { font-size: 32px; }
+  .game-arrow { font-size: 18px; color: var(--accent); }
+  .plus-sign { font-size: 20px; color: var(--hint); font-weight: bold; }
   
-  /* House Building Animation */
   .build-stage {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
-  .build-part {
-    font-size: 40px;
-    transition: all 0.3s;
-  }
+  .build-part { font-size: 32px; }
   .build-label {
-    font-size: 11px;
+    font-size: 9px;
     color: var(--muted);
     background: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-top: 2px;
+    padding: 2px 6px;
+    border-radius: 3px;
   }
 
-  .house-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .house-visual { display: flex; flex-direction: column; align-items: center; }
   .h-roof { 
     width: 0; height: 0; 
-    border-left: 60px solid transparent; 
-    border-right: 60px solid transparent; 
-    border-bottom: 40px solid var(--html);
-    margin-bottom: -2px;
+    border-left: 40px solid transparent; 
+    border-right: 40px solid transparent; 
+    border-bottom: 28px solid var(--html);
+    margin-bottom: -1px;
   }
   .h-walls { 
-    width: 120px; height: 60px; 
+    width: 80px; height: 40px; 
     background: var(--css); 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     color: white; 
     font-weight: 700; 
-    font-size: 11px;
+    font-size: 9px;
   }
   .h-foundation { 
-    width: 130px; height: 20px; 
+    width: 85px; height: 14px; 
     background: var(--js); 
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 3px 3px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 600;
   }
 
   .code-block {
     background: #f0e9e3;
-    border-radius: 6px;
-    padding: 0.75rem;
-    margin: 0.6rem 0;
+    border-radius: 4px;
+    padding: 0.6rem 0.7rem;
+    margin: 0.5rem 0;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    border-left: 3px solid var(--accent);
+    font-size: 10px;
+    border-left: 2px solid var(--accent);
   }
-  .code-block .line { display: block; padding: 1px 0; color: var(--text); }
+  .code-block .line { display: block; padding: 2px 0; color: var(--text); }
   .code-block .tag { color: var(--html); }
   .code-block .attr { color: var(--js); }
   .code-block .val { color: var(--css); }
   .code-block .text { color: var(--accent); }
 
   .slide h3 {
-    font-size: 16px;
+    font-size: 13px;
     color: var(--text);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
   }
   .slide p {
-    font-size: 13px;
+    font-size: 11px;
     color: var(--muted);
-    margin: 0.4rem 0;
-    line-height: 1.5;
+    margin: 0.3rem 0;
+    line-height: 1.45;
   }
   .slide strong { color: var(--text); }
   .slide code {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 9px;
     background: var(--accent-dim);
     color: var(--accent-hover);
-    padding: 2px 5px;
-    border-radius: 3px;
+    padding: 1px 4px;
+    border-radius: 2px;
   }
   .slide ul {
-    margin: 0.5rem 0;
-    padding-left: 1.25rem;
+    margin: 0.4rem 0;
+    padding-left: 1.1rem;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 11px;
   }
-  .slide li { margin: 0.3rem 0; }
+  .slide li { margin: 0.25rem 0; }
   
   .tip {
     background: white;
-    border-left: 3px solid var(--accent);
-    border-radius: 6px;
-    padding: 0.75rem;
-    margin: 0.75rem 0;
-    font-size: 12px;
+    border-left: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 0.6rem;
+    margin: 0.5rem 0;
+    font-size: 10px;
     color: var(--muted);
   }
-  .tip b { color: var(--text); display: block; margin-bottom: 0.3rem; font-size: 13px; }
+  .tip b { color: var(--text); display: block; margin-bottom: 0.25rem; font-size: 11px; }
 
   .heading-demo {
     background: white;
-    border: 2px solid var(--border);
-    border-radius: 6px;
-    padding: 0.75rem;
-    margin: 0.6rem 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.6rem;
+    margin: 0.5rem 0;
   }
-  .h1 { font-size: 22px; color: var(--html); font-weight: 700; margin: 0.4rem 0; }
-  .h2 { font-size: 18px; color: var(--html); font-weight: 600; margin: 0.4rem 0; }
-  .h3 { font-size: 15px; color: var(--html); font-weight: 600; margin: 0.4rem 0; }
-  .h6 { font-size: 11px; color: var(--hint); font-weight: 600; margin: 0.4rem 0; }
+  .h1 { font-size: 17px; color: var(--html); font-weight: 700; margin: 0.3rem 0; }
+  .h2 { font-size: 14px; color: var(--html); font-weight: 600; margin: 0.3rem 0; }
+  .h3 { font-size: 12px; color: var(--html); font-weight: 600; margin: 0.3rem 0; }
+  .h6 { font-size: 10px; color: var(--hint); font-weight: 600; margin: 0.3rem 0; }
 
-  .quiz-section { margin-top: 1.5rem; }
+  .result-box {
+    background: white;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    padding: 0.6rem;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .quiz-section { margin-top: 1rem; }
   .quiz-header {
     text-align: center;
-    margin-bottom: 1.25rem;
-    padding: 0.9rem;
+    margin-bottom: 0.75rem;
+    padding: 0.6rem;
     background: var(--surface);
     border: 2px solid var(--accent);
-    border-radius: 12px;
+    border-radius: 10px;
   }
-  .quiz-header h2 { font-size: 17px; color: var(--accent); margin-bottom: 0.4rem; }
-  .quiz-header p { font-size: 12px; color: var(--muted); }
+  .quiz-header h2 { font-size: 14px; color: var(--accent); margin-bottom: 0.2rem; }
+  .quiz-header p { font-size: 10px; color: var(--muted); }
 
-  .progress { margin-bottom: 1.25rem; }
-  .progress-meta { display: flex; justify-content: space-between; font-size: 10px; font-family: 'JetBrains Mono', monospace; color: var(--hint); margin-bottom: 5px; }
-  .progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress { margin-bottom: 0.75rem; }
+  .progress-meta { display: flex; justify-content: space-between; font-size: 8px; font-family: 'JetBrains Mono', monospace; color: var(--hint); margin-bottom: 3px; }
+  .progress-track { height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
   .progress-fill { height: 100%; background: var(--accent); transition: width 0.4s; }
 
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
-  .q-sec { font-family: 'JetBrains Mono', monospace; font-size: 9px; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 0.6rem; font-weight: 500; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem; }
+  .q-sec { font-family: 'JetBrains Mono', monospace; font-size: 8px; padding: 2px 6px; border-radius: 3px; display: inline-block; margin-bottom: 0.4rem; font-weight: 500; }
   .q-sec.HTML { color: var(--html); background: rgba(181, 107, 75, 0.1); }
   .q-sec.CSS  { color: var(--css);  background: rgba(90, 123, 155, 0.1); }
   .q-sec.JavaScript { color: var(--js); background: rgba(155, 139, 90, 0.1); }
-  .q-text { font-size: 15px; font-weight: 500; margin-bottom: 0.9rem; line-height: 1.4; }
+  .q-text { font-size: 13px; font-weight: 500; margin-bottom: 0.6rem; line-height: 1.35; }
   
-  .opts { display: flex; flex-direction: column; gap: 6px; }
-  .opt { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 0.65rem 0.85rem; font-size: 13px; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.15s; }
+  .opts { display: flex; flex-direction: column; gap: 4px; }
+  .opt { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 0.5rem 0.6rem; font-size: 11px; text-align: left; cursor: pointer; display: flex; align-items: center; gap: 6px; }
   .opt:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-dim); }
-  .opt-letter { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--hint); min-width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; background: var(--bg); border-radius: 3px; }
+  .opt-letter { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--hint); min-width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; background: var(--bg); border-radius: 2px; }
   .opt.correct { border-color: var(--accent); background: var(--accent-dim); color: var(--accent-hover); font-weight: 500; }
   .opt.correct .opt-letter { color: #fff; background: var(--accent); }
   .opt.wrong { border-color: var(--red); background: rgba(181, 123, 107, 0.12); color: var(--red); }
@@ -331,65 +294,52 @@
   .opt.reveal { border-color: var(--accent); background: var(--accent-dim); }
   .opt:disabled { cursor: default; }
 
-  .feedback { margin-top: 1rem; padding: 0.85rem; border-radius: 7px; border: 1px solid var(--border); background: white; font-size: 13px; color: var(--muted); display: none; line-height: 1.5; }
+  .feedback { margin-top: 0.75rem; padding: 0.6rem; border-radius: 5px; border: 1px solid var(--border); background: white; font-size: 11px; color: var(--muted); display: none; line-height: 1.4; }
   .feedback.show { display: block; }
-  .fb-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; margin-bottom: 5px; font-weight: 600; }
+  .fb-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; margin-bottom: 3px; font-weight: 600; }
   .fb-label.ok { color: var(--accent); }
   .fb-label.err { color: var(--red); }
-  .nav { margin-top: 1.25rem; display: flex; justify-content: flex-end; display: none; }
+  .nav { margin-top: 0.9rem; display: flex; justify-content: flex-end; display: none; }
   .nav.show { display: flex; }
-  .btn { background: var(--accent); color: #fff; border: none; border-radius: 7px; padding: 0.6rem 1.5rem; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .btn { background: var(--accent); color: #fff; border: none; border-radius: 5px; padding: 0.5rem 1.2rem; font-size: 11px; font-weight: 600; cursor: pointer; }
   .btn:hover { background: var(--accent-hover); }
 
-  .score { text-align: center; padding: 1.75rem 1.25rem; }
-  .score-num { font-family: 'JetBrains Mono', monospace; font-size: 42px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.2rem; }
-  .score-total { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--hint); margin-bottom: 0.4rem; }
-  .score-msg { font-size: 15px; font-weight: 600; margin-bottom: 1.25rem; }
-  .chips { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; }
-  .chip { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 12px; border-radius: 14px; border: 1px solid var(--border); background: white; color: var(--muted); }
-  .btn-outline { background: white; border: 1px solid var(--border); border-radius: 7px; padding: 0.6rem 1.5rem; font-size: 13px; cursor: pointer; }
+  .score { text-align: center; padding: 1.25rem 0.9rem; }
+  .score-num { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.15rem; }
+  .score-total { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--hint); margin-bottom: 0.3rem; }
+  .score-msg { font-size: 13px; font-weight: 600; margin-bottom: 0.9rem; }
+  .chips { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; margin-bottom: 0.9rem; }
+  .chip { font-family: 'JetBrains Mono', monospace; font-size: 8px; padding: 3px 9px; border-radius: 12px; border: 1px solid var(--border); background: white; color: var(--muted); }
+  .btn-outline { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 0.5rem 1.2rem; font-size: 11px; cursor: pointer; }
   .btn-outline:hover { border-color: var(--accent); background: var(--accent-dim); }
-
-  @media (max-width: 480px) {
-    .slide { padding: 1.1rem; }
-    .slider-wrapper { min-height: 300px; }
-    .game-element { font-size: 36px; }
-    .h-roof { border-left-width: 45px; border-right-width: 45px; border-bottom-width: 30px; }
-    .h-walls { width: 90px; height: 45px; font-size: 9px; }
-    .h-foundation { width: 100px; font-size: 8px; }
-    .h1 { font-size: 18px; }
-    .h2 { font-size: 15px; }
-    .h3 { font-size: 13px; }
-    .score-num { font-size: 36px; }
-  }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <div class="logo"><div class="logo-dot"></div><span class="logo-text">WEB.DEV / КУРС</span></div>
+    <div class="logo"><div class="logo-dot"></div><span class="logo-text">WEB.DEV</span></div>
     <h1>Основы веб-разработки</h1>
     <p class="subtitle">Листайте → учитесь → тестируйте</p>
   </header>
 
-  <!-- БЛОК 1: Игра-история (10 слайдов) -->
+  <!-- БЛОК 1 -->
   <div class="slider-section">
-    <div class="slider-title"> Как создаётся сайт: история</div>
+    <div class="slider-title">🏠 Как создаётся сайт</div>
     <div class="slider-wrapper">
       <div class="slider" id="slider1">
         <div class="slide">
-          <h3>🎮 Начнём игру!</h3>
-          <p>Представьте: вы хотите построить <strong>дом</strong>. Но это не просто дом — это <strong>веб-сайт</strong>!</p>
+          <h3>🎮 Начнём!</h3>
+          <p>Представьте: вы строите <strong>дом</strong>. Но это не просто дом — это <strong>веб-сайт</strong>!</p>
           <div class="game-scene">
             <span class="game-element">🏗️</span>
             <span class="game-arrow">→</span>
             <span class="game-element">💻</span>
           </div>
-          <div class="tip"><b>Цель:</b> Построить красивый дом (сайт), который будут видеть люди в интернете.</div>
+          <div class="tip"><b>Цель:</b> Построить красивый сайт для интернета</div>
         </div>
         
         <div class="slide">
-          <h3>📐 Шаг 1: Чертёж (HTML)</h3>
+          <h3>📐 Шаг 1: HTML (Чертёж)</h3>
           <p>Сначала нужен <strong>план дома</strong> — где стены, где окна, где двери.</p>
           <div class="game-scene">
             <div class="build-stage">
@@ -402,11 +352,11 @@
               <div class="build-label">Стены</div>
             </div>
           </div>
-          <p><strong>HTML</strong> — это чертёж и каркас сайта. Он говорит: "здесь будет заголовок, здесь текст, здесь кнопка".</p>
+          <p style="font-size:10px"><strong>HTML</strong> — это чертёж и каркас сайта. Он говорит: "здесь заголовок, здесь текст".</p>
         </div>
 
         <div class="slide">
-          <h3>🎨 Шаг 2: Отделка (CSS)</h3>
+          <h3>🎨 Шаг 2: CSS (Отделка)</h3>
           <p>Каркас готов! Теперь нужно <strong>покрасить стены</strong>, постелить пол, повесить шторы.</p>
           <div class="game-scene">
             <div class="build-stage">
@@ -419,11 +369,11 @@
               <div class="build-label">С отделкой</div>
             </div>
           </div>
-          <p><strong>CSS</strong> — это краски и обои. Он делает сайт красивым: добавляет цвета, шрифты, отступы.</p>
+          <p style="font-size:10px"><strong>CSS</strong> — это краски и обои. Делает сайт красивым!</p>
         </div>
 
         <div class="slide">
-          <h3>⚡ Шаг 3: Коммуникации (JS)</h3>
+          <h3>⚡ Шаг 3: JS (Электричество)</h3>
           <p>Дом почти готов! Осталось провести <strong>электричество и воду</strong>, чтобы всё работало.</p>
           <div class="game-scene">
             <span class="game-element">💡</span>
@@ -432,7 +382,7 @@
             <span class="plus-sign">+</span>
             <span class="game-element">🔔</span>
           </div>
-          <p><strong>JavaScript</strong> — это электричество. Он делает дом (сайт) живым: свет включается по кнопке, домофон звонит, вода течёт.</p>
+          <p style="font-size:10px"><strong>JavaScript</strong> — это электричество. Делает сайт живым!</p>
         </div>
 
         <div class="slide">
@@ -449,40 +399,13 @@
         </div>
 
         <div class="slide">
-          <h3>🔍 Как это видит браузер?</h3>
-          <p>Браузер (Chrome, Firefox) — это <strong>прораб</strong>, который читает ваши инструкции:</p>
-          <div class="game-scene" style="flex-direction: column; gap: 0.75rem;">
-            <div style="background: white; padding: 0.6rem; border-radius: 6px; width: 100%; text-align: left; font-size: 12px;">
-              <strong>1.</strong> Читает HTML → строит каркас<br>
-              <strong>2.</strong> Читает CSS → красит стены<br>
-              <strong>3.</strong> Читает JS → подключает свет
-            </div>
-          </div>
-          <p>И показывает готовый дом (сайт) посетителям!</p>
-        </div>
-
-        <div class="slide">
           <h3>📦 Что такое тег?</h3>
           <p><strong>Тег</strong> — это кирпичик в строительстве. Каждый тег — это команда:</p>
-          <div class="game-scene">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; width: 100%;">
-              <div class="result-box" style="font-size: 11px; padding: 0.6rem;">
-                <div style="font-size: 24px; margin-bottom: 4px;">&lt;h1&gt;</div>
-                <div>Заголовок</div>
-              </div>
-              <div class="result-box" style="font-size: 11px; padding: 0.6rem;">
-                <div style="font-size: 24px; margin-bottom: 4px;">&lt;p&gt;</div>
-                <div>Абзац</div>
-              </div>
-              <div class="result-box" style="font-size: 11px; padding: 0.6rem;">
-                <div style="font-size: 24px; margin-bottom: 4px;">&lt;button&gt;</div>
-                <div>Кнопка</div>
-              </div>
-              <div class="result-box" style="font-size: 11px; padding: 0.6rem;">
-                <div style="font-size: 24px; margin-bottom: 4px;">&lt;img&gt;</div>
-                <div>Картинка</div>
-              </div>
-            </div>
+          <div class="game-scene" style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;width:100%">
+            <div class="result-box">&lt;h1&gt;<br>Заголовок</div>
+            <div class="result-box">&lt;p&gt;<br>Абзац</div>
+            <div class="result-box">&lt;button&gt;<br>Кнопка</div>
+            <div class="result-box">&lt;img&gt;<br>Картинка</div>
           </div>
         </div>
 
@@ -494,54 +417,38 @@
 <span class="line"><span class="tag">&lt;p&gt;</span><span class="text">Привет!</span><span class="tag">&lt;/p&gt;</span></span>
 <span class="line"><span class="tag">&lt;button&gt;</span><span class="text">Нажми</span><span class="tag">&lt;/button&gt;</span></span>
           </div>
-          <div class="game-scene" style="min-height: 80px;">
-            <div style="text-align: center;">
-              <div style="font-size: 20px; font-weight: 700; color: var(--html); margin-bottom: 6px;">Мой сайт</div>
-              <div style="font-size: 13px; color: var(--muted); margin-bottom: 8px;">Привет!</div>
-              <button style="background: var(--accent); color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px;">Нажми</button>
-            </div>
-          </div>
         </div>
 
         <div class="slide">
-          <h3>✨ Магия происходит!</h3>
+          <h3>✨ Магия браузера!</h3>
           <p>Когда вы открываете сайт в браузере:</p>
-          <div class="game-scene" style="flex-direction: column;">
-            <div style="display: flex; align-items: center; gap: 0.6rem; margin: 0.3rem 0;">
-              <span style="font-size: 24px;">📄</span>
-              <span style="font-size: 20px;">→</span>
-              <span style="font-size: 24px;">💻</span>
-              <span style="font-size: 20px;">→</span>
-              <span style="font-size: 24px;">🌐</span>
-            </div>
-            <div style="font-size: 12px; color: var(--muted); margin-top: 0.6rem;">
-              Файл → Браузер → Готовый сайт!
-            </div>
+          <div class="game-scene">
+            <span class="game-element">📄</span>
+            <span class="game-arrow">→</span>
+            <span class="game-element">💻</span>
+            <span class="game-arrow">→</span>
+            <span class="game-element">🌐</span>
           </div>
-          <div class="tip"><b>Браузер</b> превращает код (теги) в красивую страницу, которую вы видите!</div>
+          <p style="font-size:10px;text-align:center"><strong>Браузер</strong> превращает код (теги) в красивую страницу!</p>
         </div>
 
         <div class="slide">
           <h3>🎉 Вы построили сайт!</h3>
-          <div class="game-scene" style="flex-direction: column;">
-            <div style="font-size: 48px; margin-bottom: 0.5rem;">🏆</div>
-            <div style="font-size: 16px; font-weight: 600; color: var(--text);">Поздравляем!</div>
-            <div style="font-size: 12px; color: var(--muted); margin-top: 0.4rem;">
-              Теперь вы знаете, как работают<br>
-              <strong>HTML + CSS + JavaScript</strong>
-            </div>
+          <div class="game-scene" style="flex-direction:column">
+            <div style="font-size:36px">🏆</div>
+            <div style="font-size:12px;font-weight:600;text-align:center;margin-top:0.4rem">Поздравляем!<br>Вы знаете HTML+CSS+JS!</div>
           </div>
-          <div class="tip"><b>Дальше:</b> листайте второй блок — там подробное обучение каждому тегу!</div>
+          <div class="tip"><b>Дальше:</b> листайте второй блок — там подробное обучение!</div>
         </div>
       </div>
-      <button class="slider-nav prev" onclick="moveSlide(0, -1)">‹</button>
-      <button class="slider-nav next" onclick="moveSlide(0, 1)">›</button>
+      <button class="slider-nav prev" onclick="moveSlide(0,-1)">‹</button>
+      <button class="slider-nav next" onclick="moveSlide(0,1)">›</button>
     </div>
     <div class="slider-dots" id="dots1"></div>
-    <div class="slide-counter">Слайд <span id="current1">1</span> из 10</div>
+    <div class="slide-counter"><span id="current1">1</span>/9</div>
   </div>
 
-  <!-- БЛОК 2: Обучение (20 слайдов) -->
+  <!-- БЛОК 2 -->
   <div class="slider-section">
     <div class="slider-title">📚 Обучение</div>
     <div class="slider-wrapper">
@@ -554,32 +461,23 @@
 <span class="line"><span class="tag">&lt;p&gt;</span><span class="text">Текст</span><span class="tag">&lt;/p&gt;</span></span>
 <span class="line"><span class="tag">&lt;button&gt;</span><span class="text">Кнопка</span><span class="tag">&lt;/button&gt;</span></span>
           </div>
-          <p>Большинство тегов имеют <strong>открывающую</strong> и <strong>закрывающую</strong> часть.</p>
+          <p style="font-size:10px">Большинство тегов имеют <strong>открывающую</strong> и <strong>закрывающую</strong> часть.</p>
         </div>
         <div class="slide">
           <h3>⚙️ Атрибуты тегов</h3>
-          <p>Дополнительная информация внутри тега:</p>
+          <p>Дополнительная информация внутри тега (как настройки):</p>
           <div class="code-block">
 <span class="line"><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://..."</span><span class="tag">&gt;</span></span>
 <span class="line">Ссылка</span>
 <span class="line"><span class="tag">&lt;/a&gt;</span></span>
           </div>
-          <ul>
-            <li><code>href</code> — адрес ссылки</li>
-            <li><code>src</code> — путь к картинке</li>
-            <li><code>alt</code> — описание</li>
-          </ul>
+          <ul><li><code>href</code> — адрес ссылки</li><li><code>src</code> — путь к картинке</li><li><code>alt</code> — описание</li></ul>
         </div>
         <div class="slide">
           <h3>📄 HEAD и BODY</h3>
-          <p><strong>&lt;head&gt;</strong> — служебная часть:</p>
-          <ul>
-            <li>Подключение CSS</li>
-            <li>Кодировка</li>
-            <li>Заголовок вкладки</li>
-            <li><strong>НЕ видно на странице!</strong></li>
-          </ul>
-          <p><strong>&lt;body&gt;</strong> — всё, что вы видите</p>
+          <p>Каждый HTML-документ делится на две части:</p>
+          <ul><li><strong>&lt;head&gt;</strong> — служебная часть (НЕ видно на странице): CSS, кодировка, заголовок вкладки</li><li><strong>&lt;body&gt;</strong> — всё, что вы видите на странице</li></ul>
+          <div class="tip"><b>head</b> = кухня ресторана (вы не видите)<br><b>body</b> = зал ресторана (всё что видите)</div>
         </div>
         <div class="slide">
           <h3>📏 Заголовки h1-h6</h3>
@@ -589,313 +487,190 @@
             <div class="h3">h3 — ещё меньше</div>
             <div class="h6">h6 — самый маленький</div>
           </div>
-          <div class="tip"><b>Запомните:</b> Чем МЕНЬШЕ число — тем БОЛЬШЕ заголовок!</div>
+          <div class="tip"><b>Запомните:</b> Чем МЕНЬШЕ число — тем БОЛЬШЕ заголовок! h1 = главный, h6 = наименьший</div>
         </div>
         <div class="slide">
           <h3>🔗 Ссылки &lt;a&gt;</h3>
-          <p>Тег <code>&lt;a&gt;</code> (anchor — якорь):</p>
+          <p>Тег <code>&lt;a&gt;</code> (anchor — якорь) создаёт кликабельные ссылки:</p>
           <div class="code-block">
 <span class="line"><span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="val">"https://google.com"</span><span class="tag">&gt;</span></span>
 <span class="line">  Перейти в Google</span>
 <span class="line"><span class="tag">&lt;/a&gt;</span></span>
           </div>
-          <p><code>href</code> указывает адрес, куда перейти.</p>
+          <p style="font-size:10px"><code>href</code> указывает адрес, куда перейти при клике.</p>
         </div>
         <div class="slide">
           <h3>🖼️ Картинки &lt;img&gt;</h3>
-          <p>Тег <code>&lt;img&gt;</code> (не имеет закрывающего):</p>
+          <p>Тег <code>&lt;img&gt;</code> добавляет картинки (не имеет закрывающего тега):</p>
           <div class="code-block">
 <span class="line"><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="val">"foto.jpg"</span> <span class="attr">alt</span>=<span class="val">"Описание"</span><span class="tag">&gt;</span></span>
           </div>
-          <ul>
-            <li><code>src</code> — путь к файлу</li>
-            <li><code>alt</code> — описание</li>
-          </ul>
-        </div>
-        <div class="slide">
-          <h3>📝 Абзацы &lt;p&gt;</h3>
-          <div class="code-block">
-<span class="line"><span class="tag">&lt;p&gt;</span><span class="text">Это абзац текста.</span><span class="tag">&lt;/p&gt;</span></span>
-<span class="line"><span class="tag">&lt;p&gt;</span><span class="text">Второй абзац.</span><span class="tag">&lt;/p&gt;</span></span>
-          </div>
-          <p><code>&lt;p&gt;</code> (paragraph) создаёт абзац с отступами.</p>
-        </div>
-        <div class="slide">
-          <h3>🔲 Контейнер &lt;div&gt;</h3>
-          <p><code>&lt;div&gt;</code> — универсальный блок:</p>
-          <div class="code-block">
-<span class="line"><span class="tag">&lt;div&gt;</span></span>
-<span class="line">  Здесь может быть что угодно</span>
-<span class="line"><span class="tag">&lt;/div&gt;</span></span>
-          </div>
-          <p>Используется для группировки элементов.</p>
-        </div>
-        <div class="slide">
-          <h3> Списки &lt;ul&gt; и &lt;ol&gt;</h3>
-          <div class="code-block">
-<span class="line"><span class="tag">&lt;ul&gt;</span></span>
-<span class="line">  <span class="tag">&lt;li&gt;</span>Пункт 1<span class="tag">&lt;/li&gt;</span></span>
-<span class="line">  <span class="tag">&lt;li&gt;</span>Пункт 2<span class="tag">&lt;/li&gt;</span></span>
-<span class="line"><span class="tag">&lt;/ul&gt;</span></span>
-          </div>
-          <p><code>&lt;ul&gt;</code> — маркированный список<br><code>&lt;ol&gt;</code> — нумерованный</p>
+          <ul><li><code>src</code> — путь к файлу картинки</li><li><code>alt</code> — описание (если не загрузится)</li></ul>
         </div>
         <div class="slide">
           <h3>🎨 CSS: Цвета</h3>
-          <p>Основные свойства:</p>
+          <p>Основные свойства для работы с цветом:</p>
           <div class="code-block">
-<span class="line"><span class="tag">color:</span> red;</span>
-<span class="line"><span class="tag">background:</span> blue;</span>
+<span class="line"><span class="tag">color:</span> red; <span style="color:var(--hint)">/* цвет текста */</span></span>
+<span class="line"><span class="tag">background:</span> blue; <span style="color:var(--hint)">/* цвет фона */</span></span>
           </div>
-          <p>Можно использовать названия или коды: <code>#ff0000</code></p>
+          <p style="font-size:10px">Можно использовать названия цветов (red, blue) или коды: <code>#ff0000</code></p>
         </div>
         <div class="slide">
           <h3>📐 CSS: Отступы</h3>
-          <ul>
-            <li><code>margin</code> — внешний отступ</li>
-            <li><code>padding</code> — внутренний отступ</li>
-          </ul>
-          <div class="tip"><b>margin</b> = снаружи элемента<br><b>padding</b> = внутри элемента</div>
+          <ul><li><code>margin</code> — внешний отступ (снаружи элемента, между элементами)</li><li><code>padding</code> — внутренний отступ (внутри элемента, между содержимым и границей)</li></ul>
+          <div class="tip"><b>margin</b> = место МЕЖДУ элементами<br><b>padding</b> = место ВНУТРИ рамки</div>
         </div>
         <div class="slide">
           <h3>📏 CSS: Размеры</h3>
           <div class="code-block">
-<span class="line"><span class="tag">width:</span> 200px;</span>
-<span class="line"><span class="tag">height:</span> 100px;</span>
-<span class="line"><span class="tag">font-size:</span> 16px;</span>
+<span class="line"><span class="tag">width:</span> 200px; <span style="color:var(--hint)">/* ширина */</span></span>
+<span class="line"><span class="tag">height:</span> 100px; <span style="color:var(--hint)">/* высота */</span></span>
+<span class="line"><span class="tag">font-size:</span> 16px; <span style="color:var(--hint)">/* размер текста */</span></span>
           </div>
-          <p>width = ширина, height = высота</p>
-        </div>
-        <div class="slide">
-          <h3>🔤 CSS: Шрифты</h3>
-          <div class="code-block">
-<span class="line"><span class="tag">font-family:</span> Arial;</span>
-<span class="line"><span class="tag">font-size:</span> 16px;</span>
-<span class="line"><span class="tag">font-weight:</span> bold;</span>
-          </div>
-          <p>family = шрифт, weight = жирность</p>
+          <p style="font-size:10px">width = ширина, height = высота, font-size = размер шрифта</p>
         </div>
         <div class="slide">
           <h3>⚡ JavaScript: Введение</h3>
           <p>Язык программирования для веба:</p>
-          <ul>
-            <li>Делает страницы интерактивными</li>
-            <li>Реагирует на клики</li>
-            <li>Может менять содержимое</li>
-          </ul>
-        </div>
-        <div class="slide">
-          <h3>🖱️ События JS</h3>
-          <p>Реакция на действия:</p>
-          <ul>
-            <li><code>click</code> — клик мышью</li>
-            <li><code>mouseover</code> — наведение</li>
-            <li><code>keydown</code> — клавиша</li>
-          </ul>
+          <ul><li>Делает страницы интерактивными</li><li>Реагирует на клики мыши</li><li>Может менять содержимое страницы</li><li>Добавляет анимации</li></ul>
         </div>
         <div class="slide">
           <h3>💾 Переменные</h3>
-          <p>Хранение данных:</p>
+          <p>Хранение данных (как коробки с подписями):</p>
           <div class="code-block">
 <span class="line"><span class="tag">let</span> name = <span class="val">"Анна"</span>;</span>
 <span class="line"><span class="tag">let</span> age = <span class="val">25</span>;</span>
           </div>
-          <p><code>let</code> — объявление переменной</p>
+          <p style="font-size:10px"><code>let</code> — объявление переменной (создание "коробки")</p>
         </div>
         <div class="slide">
           <h3>📊 Массивы</h3>
-          <p>Список данных:</p>
+          <p>Список данных (как список покупок):</p>
           <div class="code-block">
 <span class="line"><span class="tag">let</span> fruits = [<span class="val">"яблоко"</span>, <span class="val">"банан"</span>];</span>
           </div>
-          <ul>
-            <li><code>push()</code> — добавить</li>
-            <li><code>pop()</code> — удалить</li>
-          </ul>
-        </div>
-        <div class="slide">
-          <h3>🔍 Как браузер читает</h3>
-          <ol style="font-size:13px;color:var(--muted);padding-left:1.25rem">
-            <li>Открывает файл</li>
-            <li>Читает сверху вниз</li>
-            <li>Видит тег → понимает</li>
-            <li>Показывает на экране</li>
-          </ol>
-        </div>
-        <div class="slide">
-          <h3>💡 Советы</h3>
-          <ul>
-            <li>Не запоминайте всё наизусть</li>
-            <li>Практикуйтесь</li>
-            <li>Используйте F12</li>
-            <li>Не бойтесь ошибаться!</li>
-          </ul>
-        </div>
-        <div class="slide">
-          <h3>🚀 Первый сайт</h3>
-          <p>1. Создайте <code>index.html</code></p>
-          <p>2. Напишите:</p>
-          <div class="code-block">
-<span class="line"><span class="tag">&lt;h1&gt;</span>Привет!<span class="tag">&lt;/h1&gt;</span></span>
-<span class="line"><span class="tag">&lt;p&gt;</span>Мой сайт!<span class="tag">&lt;/p&gt;</span></span>
-          </div>
-          <p>3. Откройте в браузере — готово! 🎉</p>
+          <ul><li><code>push()</code> — добавить элемент в конец</li><li><code>pop()</code> — удалить последний элемент</li></ul>
         </div>
       </div>
-      <button class="slider-nav prev" onclick="moveSlide(1, -1)">‹</button>
-      <button class="slider-nav next" onclick="moveSlide(1, 1)">›</button>
+      <button class="slider-nav prev" onclick="moveSlide(1,-1)">‹</button>
+      <button class="slider-nav next" onclick="moveSlide(1,1)">›</button>
     </div>
     <div class="slider-dots" id="dots2"></div>
-    <div class="slide-counter">Слайд <span id="current2">1</span> из 20</div>
+    <div class="slide-counter"><span id="current2">1</span>/12</div>
   </div>
 
-  <!-- БЛОК 3: Викторина (20 вопросов) -->
+  <!-- БЛОК 3: Викторина -->
   <div class="quiz-section">
     <div class="quiz-header">
-      <h2>🎯 ВИКТОРИНА</h2>
-      <p>20 вопросов для проверки знаний</p>
+      <h2>🎯 ТЕСТ</h2>
+      <p>20 вопросов</p>
     </div>
-
     <div class="progress">
       <div class="progress-meta">
-        <span id="q-num">Вопрос 1 из 20</span>
-        <span id="q-score">0 правильных</span>
+        <span id="q-num">1/20</span>
+        <span id="q-score">0</span>
       </div>
       <div class="progress-track"><div class="progress-fill" id="pbar" style="width:0%"></div></div>
     </div>
-
     <div id="app"></div>
   </div>
 </div>
 
 <script>
-// Slider Logic
-const sliders = [
-  { current: 0, total: 10 },
-  { current: 0, total: 20 }
-];
+const sliders = [{current:0,total:9},{current:0,total:12}];
 
-function initSlider(index, total) {
-  const dotsContainer = document.getElementById(`dots${index+1}`);
-  for (let i = 0; i < total; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goToSlide(index, i);
-    dotsContainer.appendChild(dot);
+function initSlider(idx,total) {
+  const dots = document.getElementById(`dots${idx+1}`);
+  for(let i=0;i<total;i++) {
+    const d = document.createElement('div');
+    d.className = 'dot'+(i===0?' active':'');
+    d.onclick = () => goToSlide(idx,i);
+    dots.appendChild(d);
   }
 }
 
-function moveSlide(sliderIndex, direction) {
-  const slider = sliders[sliderIndex];
-  const newCurrent = slider.current + direction;
-  if (newCurrent >= 0 && newCurrent < slider.total) {
-    goToSlide(sliderIndex, newCurrent);
-  }
+function moveSlide(idx,dir) {
+  const s = sliders[idx];
+  const n = s.current+dir;
+  if(n>=0 && n<s.total) goToSlide(idx,n);
 }
 
-function goToSlide(sliderIndex, slideIndex) {
-  const slider = sliders[sliderIndex];
-  slider.current = slideIndex;
-  
-  const sliderEl = document.getElementById(`slider${sliderIndex+1}`);
-  sliderEl.style.transform = `translateX(-${slideIndex * 100}%)`;
-  
-  const dots = document.querySelectorAll(`#dots${sliderIndex+1} .dot`);
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === slideIndex);
-  });
-  
-  document.getElementById(`current${sliderIndex+1}`).textContent = slideIndex + 1;
+function goToSlide(idx,i) {
+  sliders[idx].current = i;
+  document.getElementById(`slider${idx+1}`).style.transform = `translateX(-${i*100}%)`;
+  document.querySelectorAll(`#dots${idx+1} .dot`).forEach((d,j)=>d.classList.toggle('active',j===i));
+  document.getElementById(`current${idx+1}`).textContent = i+1;
 }
 
-initSlider(0, 10);
-initSlider(1, 20);
+initSlider(0,9);
+initSlider(1,12);
 
-// Quiz Logic
-const L = ['A','B','C','D'];
-const Q = [
-  {s:"HTML",q:"Что такое HTML?",o:["Язык программирования","Язык разметки","База данных","Система"],a:1,e:"HTML — язык РАЗМЕТКИ для создания структуры страниц."},
-  {s:"HTML",q:"Какой тег для самого большого заголовка?",o:["&lt;head&gt;","&lt;h6&gt;","&lt;h1&gt;","&lt;header&gt;"],a:2,e:"&lt;h1&gt; — уровень 1 (самый большой). Чем меньше число — тем больше!"},
-  {s:"HTML",q:"Для чего нужен &lt;head&gt;?",o:["Показывает контент","Служебная информация","Шапка сайта","Текст"],a:1,e:"&lt;head&gt; содержит метаданные: CSS, кодировку. НЕ видно на странице!"},
-  {s:"HTML",q:"Что внутри &lt;body&gt;?",o:["Только код","Всё видимое","Картинки","Ссылки"],a:1,e:"&lt;body&gt; содержит ВСЁ, что вы видите на странице!"},
-  {s:"HTML",q:"Какой тег для ссылки?",o:["&lt;link&gt;","&lt;href&gt;","&lt;a&gt;","&lt;url&gt;"],a:2,e:"&lt;a&gt; (anchor) создаёт кликабельные ссылки."},
-  {s:"HTML",q:"Что такое href?",o:["Цвет","Адрес ссылки","Размер","Картинка"],a:1,e:"href указывает АДРЕС, куда перейти."},
-  {s:"HTML",q:"Как добавить картинку?",o:["&lt;pic&gt;","&lt;img&gt;","&lt;image&gt;","&lt;photo&gt;"],a:1,e:"&lt;img&gt; — тег для картинок."},
-  {s:"HTML",q:"Комментарий в HTML?",o:["// ...","/* ... */","&lt;!-- ... --&gt;","# ..."],a:2,e:"&lt;!-- комментарий --&gt; не виден на странице."},
-  {s:"HTML",q:"&lt;p&gt; создаёт...",o:["Заголовок","Абзац","Кнопку","Ссылку"],a:1,e:"&lt;p&gt; (paragraph) создаёт абзац текста."},
-  {s:"HTML",q:"&lt;div&gt; — это...",o:["Картинка","Контейнер","Ссылка","Заголовок"],a:1,e:"&lt;div&gt; — универсальный контейнер для группировки."},
-  {s:"CSS",q:"Что такое CSS?",o:["Язык стилей","Язык программирования","База","Редактор"],a:0,e:"CSS отвечает за ВНЕШНИЙ ВИД: цвета, шрифты."},
-  {s:"CSS",q:"Свойство для цвета текста?",o:["text-color","font-color","color","foreground"],a:2,e:"color задаёт цвет текста."},
-  {s:"CSS",q:"Что такое padding?",o:["Внешний","Внутренний","Цвет","Размер"],a:1,e:"padding — ВНУТРЕННИЙ отступ."},
-  {s:"CSS",q:"margin — это?",o:["Внутренний","Внешний","Цвет","Шрифт"],a:1,e:"margin — ВНЕШНИЙ отступ (между элементами)."},
-  {s:"CSS",q:"font-size меняет...",o:["Цвет","Размер шрифта","Отступ","Фон"],a:1,e:"font-size задаёт размер шрифта."},
-  {s:"JavaScript",q:"Что делает JavaScript?",o:["Структура","Интерактив","Цвета","Текст"],a:1,e:"JS добавляет ИНТЕРАКТИВ: клики, анимации."},
-  {s:"JavaScript",q:"console.log() выводит в...",o:["На страницу","В консоль","В файл","В alert"],a:1,e:"console.log() показывает в КОНСОЛИ."},
-  {s:"JavaScript",q:"Как объявить переменную?",o:["var x","let x","variable x","let или var"],a:3,e:"let и var объявляют переменные."},
-  {s:"JavaScript",q:"Что такое массив?",o:["Одна переменная","Список данных","Функция","Тег"],a:1,e:"Массив — это СПИСОК данных в квадратных скобках."},
-  {s:"HTML",q:"CSS подключается в...",o:["&lt;body&gt;","&lt;head&gt;","Везде","Нигде"],a:1,e:"CSS подключается в &lt;head&gt; через &lt;link&gt;."}
+const L=['A','B','C','D'];
+const Q=[
+  {s:"HTML",q:"Что такое HTML?",o:["Программирование","Разметка","База данных","Дизайн"],a:1,e:"HTML — язык разметки для структуры страниц."},
+  {s:"HTML",q:"Самый большой заголовок?",o:["h6","h1","head","title"],a:1,e:"h1 — самый большой (уровень 1). Чем меньше число — тем больше!"},
+  {s:"HTML",q:"Что в head?",o:["Контент","Метаданные","Текст","Картинки"],a:1,e:"head — служебная информация (CSS, кодировка). НЕ видно на странице!"},
+  {s:"HTML",q:"Что в body?",o:["Код","Всё видимое","Стили","Скрипты"],a:1,e:"body — весь видимый контент страницы."},
+  {s:"HTML",q:"Тег ссылки?",o:["link","href","a","url"],a:2,e:"<a> — anchor (якорь) создаёт кликабельные ссылки."},
+  {s:"HTML",q:"href — это?",o:["Цвет","Адрес","Размер","Текст"],a:1,e:"href указывает АДРЕС ссылки — куда перейти."},
+  {s:"HTML",q:"Картинка?",o:["pic","img","image","photo"],a:1,e:"<img> — тег для картинок (не имеет закрывающего тега)."},
+  {s:"HTML",q:"Комментарий?",o:["//","/* */","<!-- -->","#"],a:2,e:"<!-- комментарий --> не виден на странице."},
+  {s:"CSS",q:"CSS — это?",o:["Стили","Программирование","База","HTML"],a:0,e:"CSS — язык СТИЛЕЙ (цвета, шрифты, отступы)."},
+  {s:"CSS",q:"Цвет текста?",o:["text-color","color","font-color","fg"],a:1,e:"color — свойство для цвета текста."},
+  {s:"CSS",q:"padding?",o:["Снаружи","Внутри","Цвет","Размер"],a:1,e:"padding — ВНУТРЕННИЙ отступ (внутри элемента)."},
+  {s:"CSS",q:"margin?",o:["Внутри","Снаружи","Фон","Шрифт"],a:1,e:"margin — ВНЕШНИЙ отступ (между элементами)."},
+  {s:"JS",q:"JavaScript?",o:["Структура","Интерактив","Стили","Текст"],a:1,e:"JS добавляет ИНТЕРАКТИВ: клики, анимации, расчёты."},
+  {s:"JS",q:"console.log?",o:["На экран","В консоль","В файл","Alert"],a:1,e:"console.log() выводит текст в КОНСОЛЬ разработчика."},
+  {s:"JS",q:"Переменная?",o:["var/let","const","def","dim"],a:0,e:"let или var объявляют переменные."},
+  {s:"JS",q:"Массив?",o:["Одно значение","Список","Функция","Объект"],a:1,e:"Массив — это СПИСОК данных в квадратных скобках []."},
+  {s:"HTML",q:"<p> — это?",o:["Заголовок","Абзац","Кнопка","Ссылка"],a:1,e:"<p> — paragraph (абзац текста)."},
+  {s:"HTML",q:"<div>?",o:["Картинка","Контейнер","Ссылка","Таблица"],a:1,e:"<div> — универсальный контейнер для группировки."},
+  {s:"CSS",q:"font-size?",o:["Цвет","Размер шрифта","Отступ","Жирность"],a:1,e:"font-size задаёт РАЗМЕР шрифта (текста)."},
+  {s:"HTML",q:"CSS где?",o:["body","head","footer","Везде"],a:1,e:"CSS подключается в <head> через тег <link>."}
 ];
 
-let i=0, sc=0, done=false, secSc={};
-Q.forEach(q=>{secSc[q.s]=secSc[q.s]||{t:0,c:0}; secSc[q.s].t++;});
+let i=0,sc=0,done=false,secSc={};
+Q.forEach(q=>{secSc[q.s]=secSc[q.s]||{t:0,c:0};secSc[q.s].t++;});
 
 function upd() {
-  const p = Math.round((i/Q.length)*100);
-  document.getElementById('pbar').style.width = p+'%';
-  document.getElementById('q-num').textContent = i<Q.length ? `Вопрос ${i+1} из ${Q.length}` : 'Завершено';
-  document.getElementById('q-score').textContent = `${sc} правильных`;
+  document.getElementById('pbar').style.width=Math.round((i/Q.length)*100)+'%';
+  document.getElementById('q-num').textContent=`${i+1}/${Q.length}`;
+  document.getElementById('q-score').textContent=sc;
 }
 
 function render() {
   upd();
-  const app = document.getElementById('app');
-  if (i>=Q.length) { score(); return; }
-  const q = Q[i];
-  app.innerHTML = `
-    <div class="card">
-      <div class="q-sec ${q.s}">${q.s}</div>
-      <div class="q-text">${q.q}</div>
-      <div class="opts">
-        ${q.o.map((o,j)=>`<button class="opt" onclick="pick(${j})" id="o${j}"><span class="opt-letter">${L[j]}</span><span>${o}</span></button>`).join('')}
-      </div>
-      <div class="feedback" id="fb"><div class="fb-label" id="lbl"></div><div id="txt"></div></div>
-      <div class="nav" id="nav"><button class="btn" onclick="next()">${i+1<Q.length?'Следующий →':'Результат →'}</button></div>
-    </div>`;
+  const app=document.getElementById('app');
+  if(i>=Q.length){score();return;}
+  const q=Q[i];
+  app.innerHTML=`<div class="card"><div class="q-sec ${q.s}">${q.s}</div><div class="q-text">${q.q}</div><div class="opts">${q.o.map((o,j)=>`<button class="opt" onclick="pick(${j})" id="o${j}"><span class="opt-letter">${L[j]}</span>${o}</button>`).join('')}</div><div class="feedback" id="fb"><div class="fb-label" id="lbl"></div><div id="txt"></div></div><div class="nav" id="nav"><button class="btn" onclick="next()">${i+1<Q.length?'Далее→':'Итог→'}</button></div></div>`;
   done=false;
 }
 
 function pick(j) {
-  if (done) return; done=true;
-  const q = Q[i];
+  if(done)return;done=true;
+  const q=Q[i];
   document.querySelectorAll('.opt').forEach(b=>b.disabled=true);
-  const ok = j===q.a;
-  if (ok) { sc++; secSc[q.s].c++; document.getElementById('o'+j).classList.add('correct'); }
-  else { document.getElementById('o'+j).classList.add('wrong'); document.getElementById('o'+q.a).classList.add('reveal'); }
-  const fb = document.getElementById('fb');
-  document.getElementById('lbl').className = 'fb-label '+(ok?'ok':'err');
-  document.getElementById('lbl').textContent = ok?'✅ ПРАВИЛЬНО!':'❌ НЕВЕРНО';
-  document.getElementById('txt').innerHTML = q.e;
-  fb.classList.add('show');
+  const ok=j===q.a;
+  if(ok){sc++;secSc[q.s].c++;document.getElementById('o'+j).classList.add('correct');}
+  else{document.getElementById('o'+j).classList.add('wrong');document.getElementById('o'+q.a).classList.add('reveal');}
+  document.getElementById('lbl').className='fb-label '+(ok?'ok':'err');
+  document.getElementById('lbl').textContent=ok?'✅':'❌';
+  document.getElementById('txt').innerHTML=q.e;
+  document.getElementById('fb').classList.add('show');
   document.getElementById('nav').classList.add('show');
 }
 
-function next() { i++; render(); }
+function next(){i++;render();}
 
 function score() {
-  const pct = Math.round((sc/Q.length)*100);
-  const msg = pct===100?'🏆 Идеально!':pct>=80?'💪 Отлично!':pct>=60?'👍 Хорошо!':'📚 Попробуйте снова!';
-  const chips = Object.entries(secSc).map(([s,d])=>`<div class="chip">${s}: ${d.c||0}/${d.t}</div>`).join('');
-  document.getElementById('app').innerHTML = `
-    <div class="card"><div class="score">
-      <div class="score-num">${sc}</div>
-      <div class="score-total">из ${Q.length}</div>
-      <div class="score-msg">${msg}</div>
-      <div class="chips">${chips}</div>
-      <button class="btn-outline" onclick="restart()">↺ Ещё раз</button>
-    </div></div>`;
+  const pct=Math.round((sc/Q.length)*100);
+  const msg=pct===100?'🏆 Идеально!':pct>=80?'💪 Отлично!':pct>=60?'👍 Хорошо!':'📚 Ещё раз!';
+  document.getElementById('app').innerHTML=`<div class="card"><div class="score"><div class="score-num">${sc}</div><div class="score-total">из ${Q.length}</div><div class="score-msg">${msg}</div><button class="btn-outline" onclick="restart()">↺ Заново</button></div></div>`;
 }
 
-function restart() { i=0; sc=0; done=false; Object.keys(secSc).forEach(k=>secSc[k].c=0); render(); }
+function restart(){i=0;sc=0;done=false;Object.keys(secSc).forEach(k=>secSc[k].c=0);render();}
 
 render();
 </script>
